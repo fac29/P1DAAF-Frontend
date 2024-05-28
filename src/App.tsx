@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // // Components
 import Home from './components/pages/Home/Home';
 import Quiz from './components/pages/Quiz/Quiz';
-import QuestionBank from './components//pages/QuestionBank/QuestionBank';
+import QuestionBank from './components/pages/QuestionBank/QuestionBank';
 
 
 function App() {
