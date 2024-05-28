@@ -1,52 +1,40 @@
 import "./App.css";
 // import React from 'react';
-// import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 // // Components
-// import Home from './components/Home';
-// import About from './components/About';
-// import Contact from './components/Contact';
+import Home from './components/pages/Home/Home';
+import Quiz from './components/pages/Quiz/Quiz';
+import QuestionBank from './components//pages/QuestionBank/QuestionBank';
+
 
 function App() {
   return (
-    <>
-      <h1>Quip</h1>
-    </>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            <li>
+              <Link to="/quiz">Quiz</Link>
+            </li>
+            <li>
+              <Link to="/questionbank">QuestionBank</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/questionbank" element={<QuestionBank />} />
+        </Routes>
+
+      </div>
+    </Router>
   );
 }
-
-// function App() {
-//   return (
-//     <Router>
-//       <div>
-//         <nav>
-//           <ul>
-//             <li>
-//               <Link to="/">Home</Link>
-//             </li>
-//             <li>
-//               <Link to="/about">About</Link>
-//             </li>
-//             <li>
-//               <Link to="/contact">Contact</Link>
-//             </li>
-//           </ul>
-//         </nav>
-
-//         <Switch>
-//           <Route path="/about">
-//             <About />
-//           </Route>
-//           <Route path="/contact">
-//             <Contact />
-//           </Route>
-//           <Route path="/">
-//             <Home />
-//           </Route>
-//         </Switch>
-//       </div>
-//     </Router>
-//   );
-// }
 
 export default App;
