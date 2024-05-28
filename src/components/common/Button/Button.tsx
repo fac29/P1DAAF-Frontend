@@ -6,9 +6,9 @@ interface Props {
     handler: () => void
 }
 
-const Button: React.FC<Props> = ({ name, preIcon, postIcon, handler }:Props) => {
+function Button({ name, preIcon, postIcon, handler }:Props)  {
     return (
-      <button onClick={handler}>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handler}>
         {preIcon && <span className="pre-icon">{preIcon}</span>}
         {name}
         {postIcon && <span className="post-icon">{postIcon}</span>}
