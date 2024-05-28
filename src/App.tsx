@@ -1,12 +1,14 @@
 import "./App.css";
 // import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 // // Components
-import Home from './components/pages/Home/Home';
-import Quiz from './components/pages/Quiz/Quiz';
-import QuestionBank from './components/pages/QuestionBank/QuestionBank';
+import Home from "./components/pages/Home/Home";
+import Quiz from "./components/pages/Quiz/Quiz";
+import QuestionBank from "./components//pages/QuestionBank/QuestionBank";
 
+
+// import Dropdown from "./components/common/Dropdown/Dropdown.js";
 
 function App() {
   return (
@@ -31,7 +33,6 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/questionbank" element={<QuestionBank />} />
         </Routes>
-
       </div>
     </Router>
   );
