@@ -7,8 +7,7 @@ import Home from "./components/pages/Home/Home";
 import Quiz from "./components/pages/Quiz/Quiz";
 import QuestionBank from "./components//pages/QuestionBank/QuestionBank";
 
-
-// import Dropdown from "./components/common/Dropdown/Dropdown.js";
+import Dropdown from "./components/common/Dropdown/Dropdown.js";
 
 function App() {
   return (
@@ -27,6 +26,8 @@ function App() {
             </li>
           </ul>
         </nav>
+
+        <Dropdown />
 
         <Routes>
           <Route path="/home" element={<Home />} />
