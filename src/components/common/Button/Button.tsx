@@ -1,4 +1,5 @@
-import <React></React>
+import React from "react"
+import { DiAppstore } from "react-icons/di";
 
 interface Props {
     name: string,
@@ -13,6 +14,7 @@ const Button: React.FC<Props> = ({ name, preIcon, postIcon, handler }) => {
         {preIcon && <span className="pre-icon">{preIcon}</span>}
         {name}
         {postIcon && <span className="post-icon">{postIcon}</span>}
+        <DiAppstore />
       </button>
     );
   }
