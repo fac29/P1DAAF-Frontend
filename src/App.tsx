@@ -7,6 +7,7 @@ import Home from "./components/pages/Home/Home";
 import Quiz from "./components/pages/Quiz/Quiz";
 import QuestionBank from "./components//pages/QuestionBank/QuestionBank";
 import EditQuestionForm from "./components/common/EditQuestionForm/EditQuestionForm";
+import AddQuestion from "./components/common/AddQuestion/AddQuestion";
 
 // import Dropdown from "./components/common/Dropdown/Dropdown.js";
 
@@ -28,13 +29,15 @@ function App() {
           </ul>
         </nav>
 
-        <EditQuestionForm />
+        {/* <EditQuestionForm /> */}
 
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/questionbank" element={<QuestionBank />} />
         </Routes>
+
+        <AddQuestion />
       </div>
     </Router>
   );
