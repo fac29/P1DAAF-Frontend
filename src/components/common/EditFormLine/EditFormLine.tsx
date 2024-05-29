@@ -16,8 +16,8 @@ function EditFormLine({ question }: Props) {
 	}
 
 	return (
-		<div className='flex items-center justify-between bg-gray-100 p-4 rounded border-b border-gray-600 mr'>
-			<span className='text-gray-700 mr-2'>{question}</span>
+		<div className='flex  justify-between items-center bg-gray-100 p-2 rounded border-b border-gray-600 w-full'>
+			<span className='text-gray-700 mr-2 ml-2 justify-self-start'>{question}</span>
 			<div className='flex space-x-2'>
 				<Button preIcon={<FaRegEdit />} handler={handleEdit} name='Edit' />
 				<Button color="red" preIcon={<FiDelete />} handler={handleDelete} name='Delete'/>
