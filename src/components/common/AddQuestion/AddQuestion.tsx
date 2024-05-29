@@ -1,43 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-// import { useParams, useNavigate } from "react-router";
-
-export type CategoryFilterTypes =
-  | "Science"
-  | "Geography"
-  | "History"
-  | "Mathematics"
-  | "Pop Culture"
-  | "Music"
-  | "Literature"
-  | "Favourited";
-export type Favourited = true | false;
-
-export type Difficulty = "easy" | "medium" | "hard" | "all";
-
-export type Question = {
-  id: number;
-  category: string;
-  difficulty: Difficulty;
-  question: string;
-  options: Array<string>;
-  answer: string;
-  favourited: boolean; // This should be boolean instead of true
-  timestamp: Date;
-};
-export type Questions = Array<Question>;
-
-export type OuterQuestion = { questions: Questions };
-
-const testQuestionObj: Question = {
-  id: "666",
-  category: "History",
-  difficulty: "easy",
-  question: "When was Princess Diana Born?",
-  options: ["01/07/1998", "07/07/1998", "02/02/1961", "09/09/1990"],
-  answer: "07/07/1998",
-  favourited: true,
-  timestamp: "10/10/10",
-};
+import React, { useState } from "react";
+import { Question } from "../../../types";
 
 function AddQuestion() {
   const [addQuestion, setAddQuestion] = useState<Question>({
@@ -48,10 +10,10 @@ function AddQuestion() {
     options: ["01/07/1998", "07/07/1998", "02/02/1961", "09/09/1990"],
     answer: "",
     favourited: false,
-    timestamp: "",
+    timestamp: new Date(),
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     fetch("http://localhost:3000/create-question", {
@@ -172,9 +134,9 @@ function AddQuestion() {
         <div className="flex-row">
           <label>Favourited:</label>
           <input
-            type="text"
-            name="favourtied"
-            value={addQuestion.favourtited}
+            type="checkbox"
+            name="favourited"
+            checked={addQuestion.favourited}
             onChange={handleInputChange}
           />
         </div>
@@ -182,9 +144,9 @@ function AddQuestion() {
         <div className="flex-row">
           <label>Timestamp:</label>
           <input
-            type="text"
+            type="date"
             name="timestamp"
-            value={addQuestion.timestamp}
+            value={addQuestion.timestamp.toISOString().split("T")[0]}
             onChange={handleInputChange}
           />
         </div>
