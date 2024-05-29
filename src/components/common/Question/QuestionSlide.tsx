@@ -30,7 +30,7 @@ export function QuestionSlide({ questions, answers }: SlideProps) {
 					Question: {currentQuestion}
 				</div>
 
-				<div>
+				<div className='pb-4'>
 					{/* legendary piece of code  */}
 					{answers[questionIndex].map((option, index) => {
 						return (
@@ -48,8 +48,8 @@ export function QuestionSlide({ questions, answers }: SlideProps) {
 						);
 					})}
 				</div>
+				<Button name='Next' handler={incrementQuestionHandler} />
 			</div>
-			<Button name='Next' handler={incrementQuestionHandler} />
 		</div>
 	);
 }
