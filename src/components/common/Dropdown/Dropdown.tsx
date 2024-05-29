@@ -28,15 +28,23 @@ function Dropdown() {
   const difficulties: DifficultiesArray = ["Easy", "Medium", "Hard", "All"];
 
   return (
-    <div>
-      <select>
-        {categories.map((category) => {
-          return <option value="category">{category}</option>;
+    <div className="flex justify-evenly">
+      <select className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+        {categories.map((category, index) => {
+          return (
+            <option key={index} value="category">
+              {category}
+            </option>
+          );
         })}
       </select>
-      <select>
-        {difficulties.map((difficulty) => {
-          return <option value="category">{difficulty}</option>;
+      <select className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+        {difficulties.map((difficulty, index) => {
+          return (
+            <option key={index} value="category">
+              {difficulty}
+            </option>
+          );
         })}
       </select>
     </div>
