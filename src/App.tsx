@@ -6,10 +6,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
 import Quiz from "./components/pages/Quiz/Quiz";
 import QuestionBank from "./components//pages/QuestionBank/QuestionBank";
-import EditQuestionForm from "./components/common/EditQuestionForm/EditQuestionForm";
-import AddQuestion from "./components/common/AddQuestion/AddQuestion";
-
-// import Dropdown from "./components/common/Dropdown/Dropdown.js";
 
 function App() {
   return (
