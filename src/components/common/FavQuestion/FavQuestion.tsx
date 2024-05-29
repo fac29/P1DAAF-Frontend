@@ -4,6 +4,7 @@ import { FaHeartBroken } from "react-icons/fa";
 
 interface Props {
     state: boolean,
+    onTog
 }
 
 function FavQuestion({ state }:Props)  {
