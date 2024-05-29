@@ -30,6 +30,7 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/questionbank" element={<QuestionBank />} />
         </Routes>
+        <Home />
       </div>
       
     </Router>
