@@ -1,19 +1,16 @@
 import EditFormLine from '../EditFormLine/EditFormLine'
+import { Question, Questions } from '../../../types'
 
-interface Props {
-	questions: string
+interface QuestionBankTableProps {
+	questions: Questions
 }
 
-function QuestionBankTable({ question }: Props) {
-
-
+function QuestionBankTable({ questions }: QuestionBankTableProps) {
 	return (
-		<div className='flex items-center justify-between bg-gray-100 p-4 rounded border-b border-gray-600 mr'>
-			<span className='text-gray-700 mr-2'>{question}</span>
-			<div className='flex space-x-2'>
-				<Button preIcon={<FaRegEdit />} handler={handleEdit} name='Edit' />
-				<Button color="red" preIcon={<FiDelete />} handler={handleDelete} name='Delete'/>
-			</div>
+		<div className='flex flex-col items-center justify-between bg-gray-100 p-4 rounded border-b border-gray-600 mr'>
+			{questions.map((question: Question) => (
+				<EditFormLine key={question.id} question={question.question} />
+			))}
 		</div>
 	)
 }
