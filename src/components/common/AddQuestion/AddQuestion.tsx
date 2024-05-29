@@ -35,10 +35,11 @@ function AddQuestion() {
   };
 
   const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    const { name, type, checked, value } = event.target;
+
     setAddQuestion((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
