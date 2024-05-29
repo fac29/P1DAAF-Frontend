@@ -1,6 +1,5 @@
 import React from 'react';
 import QuestionBankTable from './QuestionBankTable';
-import { Questions } from '../../../types';
 
 const sampleQuestions = [
     {
