@@ -1,7 +1,8 @@
 import React from 'react';
 import QuestionBankTable from './QuestionBankTable';
+import { Questions } from '../../../types';
 
-const sampleQuestions = [
+const sampleQuestions: Questions = [
     {
       id: 1,
       category: 'Geography',
