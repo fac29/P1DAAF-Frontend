@@ -1,16 +1,22 @@
-import React from "react"
-import { FaHeart } from "react-icons/fa";
-import { FaHeartBroken } from "react-icons/fa";
+import { FaHeart } from 'react-icons/fa'
+import { FaHeartBroken } from 'react-icons/fa'
 
 interface Props {
-    state: boolean,
-    onTog
+	state: boolean
+	onToggle: () => void
 }
 
-function FavQuestion({ state }:Props)  {
-    return (
-      state? <FaHeart /> : <FaHeartBroken />
-    );
-  }
+function FavQuestion({ state, onToggle }: Props) {
+	return (
+		<div
+			onClick={onToggle}
+			className={`text-4xl cursor-pointer ${
+				state ? 'text-red-500' : 'text-gray-500'
+			}`}
+		>
+			{state ? <FaHeart /> : <FaHeartBroken />}
+		</div>
+	)
+}
 
 export default FavQuestion

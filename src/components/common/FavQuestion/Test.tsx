@@ -1,13 +1,17 @@
-import FavQuestion from "./FavQuestion";
 import { useState } from "react";
-
-const [isFav, setIsFav] = useState()
+import FavQuestion from "./FavQuestion";
 
 function Test() {
+    const [isFav, setIsFav] = useState(false); // Initialize the state with a default value
+
+    const handleToggleFav = () => {
+        setIsFav((prevState) => !prevState); // Toggle the state
+    };
+
     return (
         <div className="p-4">
-            <FavQuestion question="What is the capital of France?" />
-            <EditFormLine question="What is 2 + 2?" />
+            <FavQuestion state={isFav} onToggle={handleToggleFav} />
+        
         </div>
     );
 }
