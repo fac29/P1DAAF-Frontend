@@ -25,8 +25,11 @@ export function QuestionSlide({ questions, answers }: SlideProps) {
 	return (
 		<div className='flex flex-col justify-center items-center h-screen w-screen bg-gray-100'>
 			<div className='flex flex-col justify-center items-center w-96 h-auto p-10 border-4 border-gray-300 bg-white rounded-lg shadow-lg'>
-				<div className='text-2xl font-bold mb-4'>{currentQuestion}</div>
-				<div className='text-lg mb-6'>{questions[questionIndex]}</div>
+				<div className='text-2xl font-bold mb-4'>
+					{' '}
+					Question: {currentQuestion}
+				</div>
+
 				<div>
 					{/* legendary piece of code  */}
 					{answers[questionIndex].map((option, index) => {
