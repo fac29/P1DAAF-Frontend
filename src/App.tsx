@@ -6,24 +6,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
 import Quiz from "./components/pages/Quiz/Quiz";
 import QuestionBank from "./components//pages/QuestionBank/QuestionBank";
+import Navbar from "./components/common/Navbar/Navbar";
 
 function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/quiz">Quiz</Link>
-            </li>
-            <li>
-              <Link to="/questionbank">QuestionBank</Link>
-            </li>
-          </ul>
-        </nav>
+        <Navbar />
 
         <Routes>
           <Route path="/home" element={<Home />} />
