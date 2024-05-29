@@ -25,15 +25,11 @@ function App() {
           </ul>
         </nav>
 
-        {/* <EditQuestionForm /> */}
-
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/questionbank" element={<QuestionBank />} />
         </Routes>
-
-        <AddQuestion />
       </div>
     </Router>
   );
