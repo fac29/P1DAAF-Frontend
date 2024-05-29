@@ -7,9 +7,6 @@ import Home from "./components/pages/Home/Home";
 import Quiz from "./components/pages/Quiz/Quiz";
 import QuestionBank from "./components//pages/QuestionBank/QuestionBank";
 
-
-// import Dropdown from "./components/common/Dropdown/Dropdown.js";
-
 function App() {
   return (
     <Router>
@@ -34,6 +31,7 @@ function App() {
           <Route path="/questionbank" element={<QuestionBank />} />
         </Routes>
       </div>
+      <Test />
     </Router>
   );
 }
