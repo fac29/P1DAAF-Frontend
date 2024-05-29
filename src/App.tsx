@@ -7,7 +7,7 @@ import Home from "./components/pages/Home/Home";
 import Quiz from "./components/pages/Quiz/Quiz";
 import QuestionBank from "./components//pages/QuestionBank/QuestionBank";
 
-import Test from "./components/common/EditFormLine/Test";
+import Test from "./components/common/Button/Test";
 
 
 // import Dropdown from "./components/common/Dropdown/Dropdown.js";
