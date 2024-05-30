@@ -34,8 +34,6 @@ function QuestionBankPage() {
 	}, []) // Empty dependency array means this useEffect runs once on mount
 
 	
-
-
 	return (
 		<div className='container mx-auto flex flex-col items-center mt-10 p-5'>
 			<h1 className='text-4xl font-bold mb-4 text-white'>Question bank</h1>
@@ -43,7 +41,7 @@ function QuestionBankPage() {
 				<p>Create - Edit - Delete questions.</p>
 			</section>
 
-			<div className='flex flex-col  space-y-4'>
+			<div className='flex flex-col space-y-4'>
 				<Button name='CREATE QUESTION' color='blue' />
 				<QuestionBankTable questions={allQuestions} setAllQuestions={setAllQuestions} />
 				<Button name='BACK' color='orange' handler={backHandler} />
