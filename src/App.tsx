@@ -1,7 +1,10 @@
-import "./App.css";
-// import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import './App.css'
+import { BrowserRouter as Router } from 'react-router-dom'
+import AppRoutes from './routes/AppRoutes'
 
+import Navbar from './components/common/Navbar/Navbar'
+
+<<<<<<< HEAD
 // // Components
 import Home from "./components/pages/Home/Home";
 import Quiz from "./components/pages/Quiz/Quiz";
@@ -38,6 +41,19 @@ function App() {
       {/* <AddQuestion /> */}
     </>
   );
+=======
+
+function App() {
+	return (
+		<Router>
+			<div>
+				<Navbar />
+
+				<AppRoutes />
+			</div>
+		</Router>
+	)
+>>>>>>> main
 }
 
-export default App;
+export default App
