@@ -4,7 +4,7 @@ import { FaHome, FaQuestionCircle, FaClipboardList } from 'react-icons/fa'; // I
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-gray-800 p-4 fixed w-full top-0 z-50">
+    <nav className="bg-gray-700 p-4 fixed w-full top-0 z-50">
       <ul className="flex space-x-8">
         <li>
           <Link to="/home" className="text-white flex items-center space-x-2 hover:text-gray-400">

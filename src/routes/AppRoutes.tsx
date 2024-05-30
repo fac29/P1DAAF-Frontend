@@ -7,6 +7,7 @@ import QuestionBank from "../components/pages/QuestionBank/QuestionBank";
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/quiz" element={<Quiz />} />
       <Route path="/questionbank" element={<QuestionBank />} />
