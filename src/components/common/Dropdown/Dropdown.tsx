@@ -5,7 +5,6 @@ interface Props {
 }
 
 function Dropdown({ name, contentArr, handleDropdown }: Props) {
-  console.log(contentArr);
   return (
     <div className="flex justify-evenly">
       <select
