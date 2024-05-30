@@ -12,13 +12,13 @@ import { Question, Questions } from "../../../types";
 //   timestamp: new Date(),
 // };
 
-function EditQuestionForm(questionId) {
-  const [questionData, setQuestionData] = useState({
+function EditQuestionForm() {
+  const [questionData, setQuestionData] = useState<Question>({
     id: 0,
     category: "",
     difficulty: "",
-    question: "",
-    options: ["", "", "", ""],
+    question: "Default start values",
+    options: ["a", "b", "c", "d"],
     answer: "",
     favourited: false,
     timestamp: new Date(),
@@ -28,10 +28,13 @@ function EditQuestionForm(questionId) {
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:3000/random/1");
-
-        response.json().then((res) => {
-          // setQuestionData(res[0]);
-        });
+        const data: Question = await response.json();
+        console.log(data[0]);
+        // setQuestionData(data[0]);
+        // response.json().then((res) => {
+        //   // setQuestionData(res[0]);
+        //   console.log(res[0]);
+        // });
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -39,9 +42,9 @@ function EditQuestionForm(questionId) {
     fetchData();
   }, []);
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setQuestionValue(event.target.value);
-  }
+  // function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  //   setQuestionValue(event.target.value);
+  // }
 
   const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
     const { name, type, checked, value } = event.target;
@@ -113,7 +116,7 @@ function EditQuestionForm(questionId) {
         <input
           type="text"
           name="options"
-          value={questionData.options[0]}
+          value={questionData.options}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border rounded bg-white"
         />
@@ -124,7 +127,7 @@ function EditQuestionForm(questionId) {
         <input
           type="text"
           name="options"
-          value={questionData.options[1]}
+          value={questionData.options}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border rounded bg-white"
         />
@@ -135,7 +138,7 @@ function EditQuestionForm(questionId) {
         <input
           type="text"
           name="options"
-          value={questionData.options[2]}
+          value={questionData.options}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border rounded bg-white"
         />
@@ -146,7 +149,7 @@ function EditQuestionForm(questionId) {
         <input
           type="text"
           name="options"
-          value={questionData.options[3]}
+          value={questionData.options}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border rounded bg-white"
         />
@@ -185,7 +188,7 @@ function EditQuestionForm(questionId) {
         />
       </div>
 
-      <button type="submit">Add question</button>
+      <button type="submit">Edit question</button>
     </form>
   );
 }
