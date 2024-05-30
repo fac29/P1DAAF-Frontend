@@ -1,15 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from "../../common/Button/Button";
 import Dropdown from "../../common/Dropdown/Dropdown";
 //import { getCategoryFilterTypes, getDifficultyLevels } from "../../../utils/helper";
 
-const handler = () => {
-  console.log("clicked")
-}
+
 
 function Home() {
   // const categories = getCategoryFilterTypes();
   // const difficulties = getDifficultyLevels();
+
+  const navigate = useNavigate();
+  const handler = () => {
+    navigate('/quiz');
+  };
 
   return (
     <div className="container mx-auto flex flex-col items-center mt-10 p-5">
@@ -29,3 +33,4 @@ function Home() {
 }
 
 export default Home;
+
