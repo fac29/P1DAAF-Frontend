@@ -1,35 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
-// import { useParams, useNavigate } from "react-router";
+import { Question, Questions } from "../../../types";
 
-export type CategoryFilterTypes =
-  | "Science"
-  | "Geography"
-  | "History"
-  | "Mathematics"
-  | "Pop Culture"
-  | "Music"
-  | "Literature"
-  | "Favourited";
-export type Favourited = true | false;
-
-export type Difficulty = "easy" | "medium" | "hard" | "all";
-
-export type Question = {
-  id: number;
-  category: string;
-  difficulty: Difficulty;
-  question: string;
-  options: Array<string>;
-  answer: string;
-  favourited: boolean; // This should be boolean instead of true
-  timestamp: Date;
-};
-export type Questions = Array<Question>;
-
-export type OuterQuestion = { questions: Questions };
-
-function EditProfileForm() {
-  const [question, setQuestion] = useState<Question>();
+function EditQuestionForm() {
+  const [question, setQuestion] = useState<Question>({
+    id: 0,
+    category: "",
+    difficulty: "",
+    question: "",
+    options: ["", "", "", ""],
+    answer: "",
+    favourited: false,
+    timestamp: new Date(),
+  });
   const [questionValue, setQuestionValue] = useState(question?.question);
   const [categoryValue, setCategoryValue] = useState(question?.category);
 
@@ -121,4 +103,4 @@ function EditProfileForm() {
   );
 }
 
-export default EditProfileForm;
+export default EditQuestionForm;
