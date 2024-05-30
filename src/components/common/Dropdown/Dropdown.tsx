@@ -1,48 +1,22 @@
-type Categories =
-  | "Mathematics"
-  | "Science"
-  | "History"
-  | "Geography"
-  | "Pop Culture"
-  | "Music"
-  | "Literature"
-  | "Favourited";
-type CategoriesArray = Array<Categories>;
+interface Props {
+  name: string;
+  contentArr: Array<string>;
+  handleDropdown: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+}
 
-type Difficulties = "Easy" | "Medium" | "Hard" | "All";
-
-type DifficultiesArray = Array<Difficulties>;
-
-function Dropdown() {
-  const categories: CategoriesArray = [
-    "Mathematics",
-    "Science",
-    "History",
-    "Geography",
-    "Pop Culture",
-    "Music",
-    "Literature",
-    "Favourited",
-  ];
-
-  const difficulties: DifficultiesArray = ["Easy", "Medium", "Hard", "All"];
-
+function Dropdown({ name, contentArr, handleDropdown }: Props) {
   return (
     <div className="flex justify-evenly">
-      <select className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
-        {categories.map((category, index) => {
+      <select
+        name={name}
+        onChange={(e) => handleDropdown(e)}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center"
+      >
+        <option value="">Please choose {name}</option>
+        {contentArr?.map((category, index) => {
           return (
-            <option key={index} value="category">
+            <option key={index} value={category}>
               {category}
-            </option>
-          );
-        })}
-      </select>
-      <select className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
-        {difficulties.map((difficulty, index) => {
-          return (
-            <option key={index} value="category">
-              {difficulty}
             </option>
           );
         })}
