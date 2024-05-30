@@ -7,6 +7,7 @@ import Home from "./components/pages/Home/Home";
 import Quiz from "./components/pages/Quiz/Quiz";
 import QuestionBank from "./components//pages/QuestionBank/QuestionBank";
 
+
 function App() {
   return (
     <Router>
@@ -30,6 +31,7 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/questionbank" element={<QuestionBank />} />
         </Routes>
+        
       </div>
       
     </Router>
