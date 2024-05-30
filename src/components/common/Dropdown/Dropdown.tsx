@@ -5,6 +5,7 @@ interface Props {
 }
 
 function Dropdown({ name, contentArr, handleDropdown }: Props) {
+  console.log(contentArr);
   return (
     <div className="flex justify-evenly">
       <select
@@ -13,7 +14,7 @@ function Dropdown({ name, contentArr, handleDropdown }: Props) {
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center"
       >
         <option value="">Please choose {name}</option>
-        {contentArr.map((category, index) => {
+        {contentArr?.map((category, index) => {
           return (
             <option key={index} value={category}>
               {category}
