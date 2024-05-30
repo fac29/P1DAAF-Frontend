@@ -16,7 +16,9 @@ function EditQuestionForm() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/random/1");
+        const response = await fetch(
+          "http://localhost:3000/get-question-by-id/10"
+        );
         const responseData: [Question] = await response.json();
         const data: Question = responseData[0];
         setQuestionData(data);
@@ -34,6 +36,7 @@ function EditQuestionForm() {
       ...prevState,
       [name]: type === "checkbox" ? checked : value,
     }));
+    console.log(questionData);
   };
 
   function handleSubmit(e: React.MouseEvent<HTMLElement>) {
