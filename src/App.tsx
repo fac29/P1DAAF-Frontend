@@ -31,7 +31,6 @@ function App() {
           <Route path="/questionbank" element={<QuestionBank />} />
         </Routes>
       </div>
-      
     </Router>
   );
 }
