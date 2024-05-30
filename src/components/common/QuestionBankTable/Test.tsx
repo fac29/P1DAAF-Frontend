@@ -155,7 +155,7 @@ const sampleQuestions: Questions = [
   ];
   
 
-function Test() {
+function TestQuestionBankTable() {
   return (
     <div className='App'>
       <QuestionBankTable questions={sampleQuestions} />
@@ -163,4 +163,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default TestQuestionBankTable;

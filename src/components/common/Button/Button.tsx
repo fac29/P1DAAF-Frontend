@@ -32,8 +32,9 @@ function Button({ name, preIcon, postIcon, handler, color = 'blue' }: Props) {
 
 	return (
 		<button
-			className={`${classes} font-bold py-2 px-4 rounded flex items-center focus:outline-none`}
+			className={`${classes} font-bold py-2 px-4 rounded flex w-min text-nowrap items-center focus:outline-none`}
 			onClick={handler}
+			
 		>
 			{preIcon && <span>{preIcon}</span>}
 			{name && <span className='mx-2'>{name}</span>}
