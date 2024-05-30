@@ -1,7 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Question, Questions } from "../../../types";
 
-function EditQuestionForm() {
+interface EditQuestionFormProps {
+  id: number
+}
+
+
+function EditQuestionForm({id}: EditQuestionFormProps) {
   const [questionData, setQuestionData] = useState<Question>({
     id: 0,
     category: "",
@@ -17,8 +22,7 @@ function EditQuestionForm() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/get-question-by-id/10"
-        );
+          `http://localhost:3000/get-question-by-id/${id}`        );
         const responseData: [Question] = await response.json();
         const data: Question = responseData[0];
         setQuestionData(data);

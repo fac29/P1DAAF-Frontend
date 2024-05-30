@@ -1,12 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import EditQuestionForm from "../../common/EditQuestionForm/EditQuestionForm.tsx";
+import EditQuestionForm from '../../common/EditQuestionForm/EditQuestionForm.tsx'
 
-function AddQuestion() {
-  return (
-    <>
-      <EditQuestionForm />
-    </>
-  );
+interface AddQuestionProps {
+	id: number
 }
 
-export default AddQuestion;
+function AddQuestion({ id }: AddQuestionProps) {
+	return (
+		<>
+			<EditQuestionForm id={id} />
+		</>
+	)
+}
+
+export default AddQuestion
