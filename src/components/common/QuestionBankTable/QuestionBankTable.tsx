@@ -11,7 +11,7 @@ function QuestionBankTable({
 	questions,
 	setAllQuestions,
 }: QuestionBankTableProps) {
-	const handleDelete = (id: number) => {
+	const handleDelete = async (id: number) => {
 		console.log(`Deleting question with id: ${id}`)
 		fetch(`http://localhost:3000/delete-post/${id}`, {
 			method: 'DELETE',
