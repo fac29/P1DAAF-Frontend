@@ -21,7 +21,7 @@ function QuizPage() {
 				<p>Create - Edit - Delete questions.</p>
 			</section>
 
-			<div className='flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-6'>
+			<div className='flex flex-col  space-y-4'>
 				<Button name='CREATE QUESTION' color='blue' />
 				<TestQuestionBankTable />
 				<Button name='BACK' color='orange' handler={handler} />
