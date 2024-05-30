@@ -44,118 +44,127 @@ function AddQuestion() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="flex-col">
-        <div className="">
-          <label>ID:</label>
+    <form onSubmit={handleSubmit} className=" text-black  p-4 bg-gray-100 rounded shadow-md ">
+      <div className="grid grid-cols-2 gap-2 auto-cols-min">
+  
+          <label  className="block text-gray-700 font-bold mb-2 self-end">ID:</label>
           <input
             type="text"
             name="id"
             value={addQuestion.id}
             onChange={handleInputChange}
-            className=""
+            className="w-full px-3 py-2 border rounded bg-white"
           />
-        </div>
-        <div className="flex-row justify-between">
-          <label>Category:</label>
+        
+   
+          <label  className="block text-gray-700 self-end font-bold mb-2">Category:</label>
           <input
             type="text"
             name="category"
             value={addQuestion.category}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded bg-white"
           />
-        </div>
-        <div className="flex-row justify-between">
-          <label>Difficulty:</label>
+     
+        
+          <label  className="block text-gray-700 font-bold mb-2 self-end">Difficulty:</label>
           <input
             type="text"
             name="difficulty"
             value={addQuestion.difficulty}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded bg-white"
           />
-        </div>
-        <div className="flex-row">
-          <label>Question:</label>
+      
+      
+          <label  className="block text-gray-700 font-bold mb-2 self-end">Question:</label>
           <input
             type="text"
             name="question"
             value={addQuestion.question}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded bg-white"
           />
-        </div>
-        <div className="flex-row">
-          <label>Option 0:</label>
+       
+ 
+          <label  className="block text-gray-700 font-bold mb-2 self-end">Option 0:</label>
           <input
             type="text"
             name="options"
             value={addQuestion.options[0]}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded bg-white"
+            
           />
-        </div>
-        <div className="flex-row">
-          <label>Option 1:</label>
+      
+      
+          <label  className="block text-gray-700 font-bold mb-2 self-end">Option 1:</label>
           <input
             type="text"
             name="options"
             value={addQuestion.options[1]}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded bg-white"
           />
-        </div>
+      
 
-        <div className="flex-row">
-          <label>Option 2:</label>
+      
+          <label  className="block text-gray-700 font-bold mb-2 self-end">Option 2:</label>
           <input
             type="text"
             name="options"
             value={addQuestion.options[2]}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded bg-white"
           />
-        </div>
+     
 
-        <div className="flex-row">
-          <label>Option 3:</label>
+          <label  className="block text-gray-700 font-bold mb-2 self-end">Option 3:</label>
           <input
             type="text"
             name="options"
             value={addQuestion.options[3]}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded bg-white"
           />
-        </div>
+      
 
-        <div className="flex-row">
-          <label>Answer:</label>
+          <label  className="block text-gray-700 font-bold mb-2 self-end">Answer:</label>
           <input
             type="text"
             name="answer"
             value={addQuestion.answer}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded bg-white"
           />
-        </div>
-
-        <div className="flex-row">
-          <label>Favourited:</label>
+     
+       
+          <label  className="block text-gray-700 font-bold mb-2 self-end">Favourited:</label>
           <input
             type="checkbox"
             name="favourited"
             checked={addQuestion.favourited}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded bg-white"
           />
-        </div>
+       
 
-        <div className="flex-row">
-          <label>Timestamp:</label>
+       
+          <label  className="block text-gray-700 font-bold mb-2 self-end">Timestamp:</label>
           <input
             type="date"
             name="timestamp"
             value={addQuestion.timestamp.toISOString().split("T")[0]}
             onChange={handleInputChange}
+            className="w-full px-3 py-2 border rounded bg-white"
           />
-        </div>
+       
       </div>
 
       <button type="submit">Add question</button>
     </form>
   );
 }
+
 
 export default AddQuestion;
