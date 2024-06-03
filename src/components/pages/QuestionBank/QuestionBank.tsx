@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react'
 import Button from '../../common/Button/Button'
 import QuestionBankTable from '../../common/QuestionBankTable/QuestionBankTable'
 import { Questions } from '../../../types'
+import { REACT_APP_API_URL } from '../../../utils/helper'
 
 function QuestionBankPage() {
 	const [allQuestions, setAllQuestions] = useState<Questions>([])
 	const navigate = useNavigate()
 
-	const apiURL = process.env.REACT_APP_API_URL
+	//const apiURL = process.env.REACT_APP_API_URL
+	const apiURL = REACT_APP_API_URL
 	console.log(`URL es: ${apiURL}`)
 
 	const backHandler = () => {
@@ -18,15 +20,12 @@ function QuestionBankPage() {
 		navigate('/questionbank/addquestion')
 	}
 	useEffect(() => {
-		//fetch(`${apiURL}`, {
-		fetch('https://18.175.120.83:3000/', {
+		fetch(`${apiURL}`, {
 			// Update the URL to match your endpoint
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-
-      
 		})
 			.then((response) => response.json())
 			.then((data) => {
@@ -37,7 +36,7 @@ function QuestionBankPage() {
 				// Handle any errors
 				console.error('Error:', error)
 			})
-	}, []) // Empty dependency array means this useEffect runs once on mount
+	}, [apiURL]) // Empty dependency array means this useEffect runs once on mount
 
 	return (
 		<div className='container mx-auto flex flex-col items-center mt-10 p-5'>
