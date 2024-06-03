@@ -15,7 +15,7 @@ const AppRoutes: React.FC = () => {
       <Route path="/questionbank" element={<QuestionBank />} />
 
       <Route path="/questionbank/addquestion" element={<AddQuestion />} />
-      <Route path="/questionbank/editquestion/:id" element={<EditQuestion />} />
+      <Route path="/questionbank/editquestion/:id" element={<EditQuestion id={20}/>} />
 
     </Routes>
   );

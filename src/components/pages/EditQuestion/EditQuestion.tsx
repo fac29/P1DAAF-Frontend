@@ -1,15 +1,10 @@
-import EditQuestionForm from '../../common/EditQuestionForm/EditQuestionForm.tsx'
+import { useParams } from 'react-router-dom';
+import EditQuestionForm from '../../common/EditQuestionForm/EditQuestionForm';
 
-interface AddQuestionProps {
-	id: number
-}
+const EditQuestion = () => {
+  const { id } = useParams<{ id: string }>(); // Use useParams to get the id from the URL
 
-function EditQuestion({id}: AddQuestionProps) {
-	return (
-		<>
-			<EditQuestionForm id={Number (id)} />
-		</>
-	)
-}
+  return <EditQuestionForm id={Number(id)} />;
+};
 
-export default EditQuestion
+export default EditQuestion;
