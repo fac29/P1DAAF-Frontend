@@ -11,6 +11,7 @@ const AppRoutes: React.FC = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/P1DAAF-Frontend" element={<Home />} />
       <Route path="/quiz" element={<Quiz />} />
       <Route path="/questionbank" element={<QuestionBank />} />
       <Route path="/questionbank/addquestion" element={<AddQuestion />} />
