@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Question } from "../../../types";
 
 interface EditQuestionFormProps {
-  id: number
+  id: number;
 }
 
-
-function EditQuestionForm({id}: EditQuestionFormProps) {
+const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
   const [questionData, setQuestionData] = useState<Question>({
     id: 0,
     category: "",
@@ -15,17 +14,16 @@ function EditQuestionForm({id}: EditQuestionFormProps) {
     options: ["a", "b", "c", "d"],
     answer: "",
     favourited: false,
-    timestamp: new Date(),
+    timestamp: new Date(), // Initialize timestamp as a Date object
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(id)
-        const response = await fetch(
-          `http://localhost:3000/get-question-by-id/${id}`        );
+        const response = await fetch(`http://localhost:3000/get-question-by-id/${id}`);
         const responseData: [Question] = await response.json();
         const data: Question = responseData[0];
+        data.timestamp = new Date(data.timestamp); // Convert timestamp to Date object
         setQuestionData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -35,24 +33,23 @@ function EditQuestionForm({id}: EditQuestionFormProps) {
   }, [id]);
 
   const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const { name, type, checked, value } = event.target;
+    const { name, type, checked, value } = event.currentTarget;
 
     setQuestionData((prevState) => ({
       ...prevState,
       [name]: type === "checkbox" ? checked : value,
     }));
-    console.log(questionData);
   };
 
-  function handleSubmit(e: React.MouseEvent<HTMLElement>) {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(questionData);
-  }
+  };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className=" text-black  p-4 bg-gray-100 rounded shadow-md "
+      className="text-black p-4 bg-gray-100 rounded shadow-md"
     >
       <div className="grid grid-cols-2 gap-2 auto-cols-min">
         <label className="block text-gray-700 font-bold mb-2 self-end">
@@ -64,6 +61,7 @@ function EditQuestionForm({id}: EditQuestionFormProps) {
           value={questionData.id}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border rounded bg-white"
+          disabled
         />
 
         <label className="block text-gray-700 self-end font-bold mb-2">
@@ -171,15 +169,17 @@ function EditQuestionForm({id}: EditQuestionFormProps) {
         <input
           type="date"
           name="timestamp"
-          value={questionData}
+          value={questionData.timestamp.toISOString().substr(0, 10)}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border rounded bg-white"
         />
       </div>
 
-      <button type="submit">Edit question</button>
+      <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+        Edit question
+      </button>
     </form>
   );
-}
+};
 
 export default EditQuestionForm;

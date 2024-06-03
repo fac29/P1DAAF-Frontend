@@ -39,17 +39,9 @@ function QuestionBankTable({
 	}
 	const navigate = useNavigate()
 
-
-
-
-
-
-
-
-	
 	const handleEdit = (id: number) => {
 		console.log(`Editing question with id: ${id}`)
-		navigate(`http://localhost:3000/edit-question/${id}`)
+		navigate(`/questionbank/editquestion/${id}`)
 	}
 
 	return (
