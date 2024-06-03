@@ -35,7 +35,7 @@ function AddQuestionForm() {
   };
 
   const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const { name, type, checked, value } = event.target;
+    const { name, type, checked, value } = event.target as HTMLInputElement;
 
     setAddQuestion((prevState) => ({
       ...prevState,
