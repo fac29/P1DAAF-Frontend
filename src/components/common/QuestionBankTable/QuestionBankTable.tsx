@@ -12,6 +12,7 @@ function QuestionBankTable({
 	questions,
 	setAllQuestions,
 }: QuestionBankTableProps) {
+	//const apiUrl = process.env.apiURL
 	const handleDelete = (id: number) => {
 		console.log(`Deleting question with id: ${id}`)
 		fetch(`http://localhost:3000/delete-post/${id}`, {
