@@ -9,7 +9,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 	const [questionData, setQuestionData] = useState<Question>({
 		id: 0,
 		category: '',
-		difficulty: '',
+		difficulty: 'medium',
 		question: 'Default start values',
 		options: ['a', 'b', 'c', 'd'],
 		answer: '',
