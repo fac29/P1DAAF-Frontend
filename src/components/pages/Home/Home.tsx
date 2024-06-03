@@ -8,8 +8,8 @@ import {
 	getDifficultyLevels,
 } from '../../../utils/helper';
 import { CategoryFilterTypes, Difficulty } from '../../../types';
-import { Questions } from '../../../types';
-import { QuestionSlide } from '../../common/Question/QuestionSlide';
+// import { Questions } from '../../../types';
+// import { QuestionSlide } from '../../common/Question/QuestionSlide';
 
 function Home() {
 	const categories = getCategoryFilterTypes();
@@ -17,7 +17,7 @@ function Home() {
 
 	const [category, setCategory] = useState<CategoryFilterTypes>('Favourited');
 	const [difficulty, setDifficulty] = useState<Difficulty>('all');
-	const [quizData, setQuizData] = useState({ questions: [], options: [] });
+	//const [quizData, setQuizData] = useState({ questions: [], options: [] });
 	// console.log('Category selected ' + category);
 	// console.log('Difficulty selected ' + difficulty);
 
@@ -38,12 +38,10 @@ function Home() {
 		setDifficulty(event.target.value as Difficulty);
 	};
 	//rethink this useEffect
-	// useEffect(() => {
-	// 	getData(category, difficulty).then((result) => {
-	// 		const transformedData = transformData(result);
-	// 		setQuizData(transformedData);
-	// 	});
-	// }, [category, difficulty]);
+
+	getData(category, difficulty).then((result) => {
+		transformData(result);
+	});
 
 	return (
 		<div className='container mx-auto flex flex-col items-center mt-10 p-5'>
@@ -64,7 +62,7 @@ function Home() {
 				/>
 			</div>
 			<Button name='START QUIZ' color='orange' handler={handler} />
-{/* you will eventually move this to thw Quiz page -> still keep the concept of passing from a parent to a child component
+			{/* you will eventually move this to thw Quiz page -> still keep the concept of passing from a parent to a child component
 			<QuestionSlide
 				questions={quizData.questions}
 				options={quizData.answers}

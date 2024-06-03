@@ -17,7 +17,7 @@ function Quiz() {
 					'What is the chemical symbol for Hydrogen?',
 					'When was Princess Diana Born?',
 				]}
-				answers={[
+				options={[
 					['hd', 'asd', 'op', 'hkl'],
 					['1999', '1900', '3000', '6374'],
 				]}

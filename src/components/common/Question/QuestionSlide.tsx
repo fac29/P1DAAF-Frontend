@@ -10,7 +10,7 @@ interface SlideProps {
 export function QuestionSlide({ questions, options }: SlideProps) {
 	//initalizing the state
 
-	const [selectedOption, setselectedOption] = useState<string>();
+	const [selectedOption, setselectedOption] = useState('');
 
 	//handler to change the colour of the button ("option")
 	const handleOptionClick = (option: string) => {
@@ -59,4 +59,3 @@ export function QuestionSlide({ questions, options }: SlideProps) {
 		</div>
 	);
 }
-
