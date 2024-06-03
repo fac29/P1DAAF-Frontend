@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Question, Questions } from "../../../types";
+import React, { useState, useEffect } from "react";
+import { Question } from "../../../types";
 
 interface EditQuestionFormProps {
   id: number
@@ -15,12 +15,13 @@ function EditQuestionForm({id}: EditQuestionFormProps) {
     options: ["a", "b", "c", "d"],
     answer: "",
     favourited: false,
-    timestamp: "",
+    timestamp: new Date(),
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(id)
         const response = await fetch(
           `http://localhost:3000/get-question-by-id/${id}`        );
         const responseData: [Question] = await response.json();
@@ -31,7 +32,7 @@ function EditQuestionForm({id}: EditQuestionFormProps) {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
     const { name, type, checked, value } = event.target;

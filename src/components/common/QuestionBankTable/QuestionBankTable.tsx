@@ -40,8 +40,7 @@ function QuestionBankTable({
 	const navigate = useNavigate()
 
 	const handleEdit = (id: number) => {
-		navigate('./editquestion')
-		console.log(id)
+		navigate(`./editquestion/${id}`)
 	}
 
 	return (

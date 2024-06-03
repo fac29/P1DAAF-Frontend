@@ -4,12 +4,12 @@ interface AddQuestionProps {
 	id: number
 }
 
-function AddQuestion({ id }: AddQuestionProps) {
+function EditQuestion({id}: AddQuestionProps) {
 	return (
 		<>
-			<EditQuestionForm id={id} />
+			<EditQuestionForm id={Number (id)} />
 		</>
 	)
 }
 
-export default AddQuestion
+export default EditQuestion
