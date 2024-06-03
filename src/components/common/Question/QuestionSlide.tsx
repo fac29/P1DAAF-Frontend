@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '../Button/Button';
+import Button  from '../Button/Button';
 interface SlideProps {
 	questions: string[];
 	answers: string[][];
@@ -7,7 +7,7 @@ interface SlideProps {
 	onSlideAdvance?(): void;
 }
 
-export function QuestionSlide({ questions, answers }: SlideProps) {
+export function QuestionSlide({  answers }: SlideProps) {
 	//initalizing the state
 	const [selectedAnswer, setSelectedAnswer] = useState<string>();
 	const [currentQuestion, setCurrentQuestion] = useState(1);
