@@ -1,9 +1,23 @@
 import { QuestionSlide } from '../../common/Question/QuestionSlide';
-//import { getData } from '../../../data/getData';
+import { getData, transformData } from '../../../data/getData';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Questions } from '../../../types';
 
 function Quiz() {
-	// let arrayOfQuestions = getData();
-	// console.log(arrayOfQuestions);
+	const [data, setData] = useState<
+		{
+			question: string;
+			options: string[];
+		}[]
+	>();
+
+	useEffect(() => {
+		getData('History', 'easy')
+			.then((data) => transformData(data))
+			.then((result) => setData(result));
+	}, []); // Empty dependency array means this effect runs once on mount
+
 	return (
 		<>
 			<h1>Quiz component </h1>
@@ -12,16 +26,12 @@ function Quiz() {
 			<h1>Quiz component </h1>
 			<h1>Quiz component </h1>
 			<h1>Quiz component </h1>
-			<QuestionSlide
-				questions={[
-					'What is the chemical symbol for Hydrogen?',
-					'When was Princess Diana Born?',
-				]}
-				options={[
-					['hd', 'asd', 'op', 'hkl'],
-					['1999', '1900', '3000', '6374'],
-				]}
-			/>
+			{Array.isArray(data) && data.length > 0 ? (
+				<QuestionSlide
+					questions={data?.map((element) => element.question)}
+					options={data?.map((element) => element.options)}
+				/>
+			) : null}
 		</>
 	);
 }
