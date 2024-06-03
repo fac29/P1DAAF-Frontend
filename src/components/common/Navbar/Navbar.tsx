@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaQuestionCircle, FaClipboardList } from 'react-icons/fa'; // Importing icons
+import { FaHome, FaQuestionCircle } from 'react-icons/fa'; // Importing icons
+// import { FaClipboardList } from 'react-icons/fa'; // Importing quiz icon
 
 const Navbar: React.FC = () => {
   return (
@@ -12,12 +13,12 @@ const Navbar: React.FC = () => {
             <span>Home</span>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/quiz" className="text-white flex items-center space-x-2 hover:text-gray-400">
             <FaClipboardList />
             <span>Quiz</span>
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/questionbank" className="text-white flex items-center space-x-2 hover:text-gray-400">
             <FaQuestionCircle />

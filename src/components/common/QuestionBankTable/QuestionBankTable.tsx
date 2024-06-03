@@ -1,6 +1,7 @@
 import React from 'react'
 import EditFormLine from '../EditFormLine/EditFormLine'
 import { Questions } from '../../../types'
+import { useNavigate } from 'react-router-dom'
 
 interface QuestionBankTableProps {
 	questions: Questions
@@ -11,7 +12,7 @@ function QuestionBankTable({
 	questions,
 	setAllQuestions,
 }: QuestionBankTableProps) {
-	const handleDelete = async (id: number) => {
+	const handleDelete = (id: number) => {
 		console.log(`Deleting question with id: ${id}`)
 		fetch(`http://localhost:3000/delete-post/${id}`, {
 			method: 'DELETE',
@@ -36,6 +37,12 @@ function QuestionBankTable({
 				console.error('Error:', error)
 			})
 	}
+	const navigate = useNavigate()
+
+	const handleEdit = (id: number) => {
+		console.log(`Editing question with id: ${id}`)
+		navigate(`/questionbank/editquestion/${id}`)
+	}
 
 	return (
 		<div className='question-bank-table'>
@@ -44,6 +51,7 @@ function QuestionBankTable({
 					key={question.id}
 					question={question}
 					onDelete={() => handleDelete(question.id)}
+					onEdit={() => handleEdit(question.id)}
 				/>
 			))}
 		</div>
