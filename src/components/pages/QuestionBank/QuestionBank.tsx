@@ -18,7 +18,8 @@ function QuestionBankPage() {
 		navigate('/questionbank/addquestion')
 	}
 	useEffect(() => {
-		fetch(`${apiURL}`, {
+		//fetch(`${apiURL}`, {
+		fetch('https://18.175.120.83:3000/', {
 			// Update the URL to match your endpoint
 			method: 'GET',
 			headers: {
