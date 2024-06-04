@@ -1,23 +1,26 @@
 import { MouseEventHandler, useEffect, useState } from 'react';
+//ButtonHandler?
 import Button from '../Button/Button';
 interface SlideProps {
 	questions: string[];
 	options: string[][];
 	answers: string[];
-	feedback?: string;
-	onSlideAdvance?(): void;
+	//feedback?: string;
+	//onSlideAdvance?(): void;
 	// onClickEvent: (event: React.MouseEvent<HTMLAnchorElement>)
 }
 
 export function QuestionSlide({ questions, options, answers }: SlideProps) {
 	//initalizing the state
 
+	//Answer that user selected
 	const [selectedOption, setselectedOption] = useState('');
 
 	//handler to change the colour of the button ("option")
-	// const handleOptionClick = (option: string) => {
-	// 	setselectedOption(option);
-	// };
+	const handleOptionClick = (option: string) => {
+		setselectedOption(option);
+		console.log(`Option is ${option}`)
+	};
 
 	const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
 	const [questionIndex, setQuestionIndex] = useState(0);
@@ -31,9 +34,7 @@ export function QuestionSlide({ questions, options, answers }: SlideProps) {
 	};
 
 	//store the score
-	const [score, setScore] = useState<number>(0);
-	//store selected answer in useState
-	const [answer, setAnswer] = useState<string>('');
+	const [score, setScore] = useState<number>(0);	
 
 	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		const buttonValue = e.currentTarget.getAttribute('data-value');
@@ -61,7 +62,7 @@ export function QuestionSlide({ questions, options, answers }: SlideProps) {
 						return (
 							<button
 								key={index}
-								onClick={() => handleClick}
+								onClick={() => handleOptionClick}
 								className={`w-full py-2 my-2 text-center rounded-lg ${
 									selectedOption === option
 										? 'bg-green-500 text-white'
