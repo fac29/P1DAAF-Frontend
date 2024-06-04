@@ -1,21 +1,23 @@
-import { useState } from 'react';
+import { MouseEventHandler, useEffect, useState } from 'react';
 import Button from '../Button/Button';
 interface SlideProps {
 	questions: string[];
 	options: string[][];
+	answers: string[];
 	feedback?: string;
 	onSlideAdvance?(): void;
+	// onClickEvent: (event: React.MouseEvent<HTMLAnchorElement>)
 }
 
-export function QuestionSlide({ questions, options }: SlideProps) {
+export function QuestionSlide({ questions, options, answers }: SlideProps) {
 	//initalizing the state
 
 	const [selectedOption, setselectedOption] = useState('');
 
 	//handler to change the colour of the button ("option")
-	const handleOptionClick = (option: string) => {
-		setselectedOption(option);
-	};
+	// const handleOptionClick = (option: string) => {
+	// 	setselectedOption(option);
+	// };
 
 	const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
 	const [questionIndex, setQuestionIndex] = useState(0);
@@ -27,6 +29,23 @@ export function QuestionSlide({ questions, options }: SlideProps) {
 		//used to display a question per button
 		setQuestionIndex(questionIndex + 1);
 	};
+
+	//store the score
+	const [score, setScore] = useState<number>(0);
+	//store selected answer in useState
+	const [answer, setAnswer] = useState<string>('');
+
+	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+		const buttonValue = e.currentTarget.getAttribute('data-value');
+		if (buttonValue === answers[questionIndex]) {
+			setScore(score + 1);
+		}
+		console.log(score);
+	};
+
+	useEffect(()=>{
+
+	}),[]
 
 	return (
 		<div className='flex flex-col justify-center items-center h-screen w-screen bg-gray-100'>
@@ -42,12 +61,13 @@ export function QuestionSlide({ questions, options }: SlideProps) {
 						return (
 							<button
 								key={index}
-								onClick={() => handleOptionClick(option)}
+								onClick={() => handleClick}
 								className={`w-full py-2 my-2 text-center rounded-lg ${
 									selectedOption === option
 										? 'bg-green-500 text-white'
 										: 'bg-gray-200 text-gray-700 hover:bg-gray-300'
 								}`}
+								data-value={option}
 							>
 								{option}
 							</button>
@@ -56,6 +76,7 @@ export function QuestionSlide({ questions, options }: SlideProps) {
 				</div>
 				<Button name='Next' handler={incrementQuestionHandler} />
 			</div>
+			{answers[questionIndex]}
 		</div>
 	);
 }

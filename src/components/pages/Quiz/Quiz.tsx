@@ -1,9 +1,8 @@
 import { QuestionSlide } from '../../common/Question/QuestionSlide';
-import { getData, transformData } from '../../../data/getData';
-import { useLocation } from 'react-router-dom';
+import { getData } from '../../../data/getData';
 import { useState, useEffect } from 'react';
-import { Questions } from '../../../types';
 import { useParams } from 'react-router-dom';
+import { Questions } from '../../../types';
 
 function Quiz() {
 	const { category, difficulty } = useParams<{
@@ -11,18 +10,11 @@ function Quiz() {
 		difficulty: string;
 	}>();
 
-	const [data, setData] = useState<
-		{
-			question: string;
-			options: string[];
-		}[]
-	>();
+	const [data, setData] = useState<Questions>();
 
 	useEffect(() => {
 		if (category && difficulty) {
-			getData(category, difficulty)
-				.then((data) => transformData(data))
-				.then((result) => setData(result));
+			getData(category, difficulty).then((result) => setData(result));
 		}
 	}, [category, difficulty]); // Dependency array includes category and difficulty
 
@@ -32,6 +24,7 @@ function Quiz() {
 				<QuestionSlide
 					questions={data?.map((element) => element.question)}
 					options={data?.map((element) => element.options)}
+					answers ={ data?.map((element) => element.answer)}
 				/>
 			) : null}
 		</>

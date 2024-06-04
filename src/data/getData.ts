@@ -17,7 +17,7 @@ export async function getData(category: string, difficulty: string) {
 		);
 
 		const data = await response.json();
-		console.log(`This is coming from the getData function${data}`);
+		console.dir({ data });
 		return data;
 	} catch (error) {
 		console.log(error);
