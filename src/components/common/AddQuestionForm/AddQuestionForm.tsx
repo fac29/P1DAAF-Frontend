@@ -16,6 +16,11 @@ function AddQuestionForm() {
   const apiURL = REACT_APP_API_URL;
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    let { id, timestamp } = addQuestion;
+    const newId = new Date().valueOf();
+    const newTimestamp = new Date();
+    id = newId;
+    timestamp = newTimestamp;
 
     //fetch("http://localhost:3000/create-question", {
     fetch(`${apiURL}/create-question`, {
