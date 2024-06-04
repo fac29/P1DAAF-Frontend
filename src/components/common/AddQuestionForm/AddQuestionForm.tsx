@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Question } from "../../../types";
-import { REACT_APP_API_URL } from '../../../utils/helper'
+import { REACT_APP_API_URL } from "../../../utils/helper";
 
 function AddQuestionForm() {
   const [addQuestion, setAddQuestion] = useState<Question>({
@@ -13,7 +13,7 @@ function AddQuestionForm() {
     favourited: false,
     timestamp: new Date(),
   });
-  const apiURL = REACT_APP_API_URL
+  const apiURL = REACT_APP_API_URL;
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -51,17 +51,6 @@ function AddQuestionForm() {
       className=" text-black  p-4 bg-gray-100 rounded shadow-md "
     >
       <div className="grid grid-cols-2 gap-2 auto-cols-min">
-        <label className="block text-gray-700 font-bold mb-2 self-end">
-          ID:
-        </label>
-        <input
-          type="text"
-          name="id"
-          value={addQuestion.id}
-          onChange={handleInputChange}
-          className="w-full px-3 py-2 border rounded bg-white"
-        />
-
         <label className="block text-gray-700 self-end font-bold mb-2">
           Category:
         </label>
@@ -157,17 +146,6 @@ function AddQuestionForm() {
           type="checkbox"
           name="favourited"
           checked={addQuestion.favourited}
-          onChange={handleInputChange}
-          className="w-full px-3 py-2 border rounded bg-white"
-        />
-
-        <label className="block text-gray-700 font-bold mb-2 self-end">
-          Timestamp:
-        </label>
-        <input
-          type="date"
-          name="timestamp"
-          value={addQuestion.timestamp.toISOString().split("T")[0]}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border rounded bg-white"
         />
