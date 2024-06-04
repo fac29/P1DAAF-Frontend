@@ -13,12 +13,8 @@ function AddQuestionForm() {
     favourited: false,
     timestamp: new Date(),
   });
-<<<<<<< HEAD
-  const apiURL = REACT_APP_API_URL
-  console.log(`React URL ${REACT_APP_API_URL}`)
-=======
   const apiURL = REACT_APP_API_URL;
->>>>>>> main
+  console.log(`React URL ${REACT_APP_API_URL}`);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
