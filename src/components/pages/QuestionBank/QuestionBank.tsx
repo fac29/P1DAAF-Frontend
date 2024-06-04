@@ -11,7 +11,7 @@ function QuestionBankPage() {
 
 	//const apiURL = process.env.REACT_APP_API_URL
 	const apiURL = REACT_APP_API_URL
-	console.log(`URL es: ${apiURL}`)
+	// console.log(`URL es: ${apiURL}`)
 
 	const backHandler = () => {
 		navigate('/home')
