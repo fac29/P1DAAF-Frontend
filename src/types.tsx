@@ -1,25 +1,36 @@
 export type CategoryFilterTypes =
-	| 'Science'
-	| 'Geography'
-	| 'History'
-	| 'Mathematics'
-	| 'Pop Culture'
-	| 'Music'
-	| 'Literature'
-	| 'Favourited';
+  | "Science"
+  | "Geography"
+  | "History"
+  | "Mathematics"
+  | "Pop Culture"
+  | "Music"
+  | "Literature"
+  | "Favourited";
 export type Favourited = true | false;
 
-export type Difficulty = 'easy' | 'medium' | 'hard' | 'all';
+export type Difficulty = "easy" | "medium" | "hard" | "all";
 
 export type Question = {
-	id: number;
-	category: string;
-	difficulty: Difficulty;
-	question: string;
-	options: Array<string>;
-	answer: string;
-	favourited: boolean; // This should be boolean instead of true
-	timestamp: Date;
+  id: number;
+  category: string;
+  difficulty: Difficulty;
+  question: string;
+  options: Array<string>;
+  answer: string;
+  favourited: boolean; // This should be boolean instead of true
+  timestamp: Date;
+};
+
+export type AddQuestion = {
+  id?: number | string;
+  category: string;
+  difficulty: string;
+  question: string;
+  options: Array<string>;
+  answer: string;
+  favourited: boolean; // This should be boolean instead of true
+  timestamp?: Date;
 };
 export type Questions = Array<Question>;
 
