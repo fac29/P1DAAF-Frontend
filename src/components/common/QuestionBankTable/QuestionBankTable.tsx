@@ -2,6 +2,7 @@ import React from 'react'
 import EditFormLine from '../EditFormLine/EditFormLine'
 import { Questions } from '../../../types'
 import { useNavigate } from 'react-router-dom'
+import { REACT_APP_API_URL } from '../../../utils/helper'
 
 interface QuestionBankTableProps {
 	questions: Questions
@@ -12,9 +13,13 @@ function QuestionBankTable({
 	questions,
 	setAllQuestions,
 }: QuestionBankTableProps) {
+	//const apiUrl = process.env.apiURL
+	const apiURL = REACT_APP_API_URL
+	console.log(apiURL)
+
 	const handleDelete = (id: number) => {
 		console.log(`Deleting question with id: ${id}`)
-		fetch(`http://localhost:3000/delete-post/${id}`, {
+		fetch(`${apiURL}/delete-post/${id}`, {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',

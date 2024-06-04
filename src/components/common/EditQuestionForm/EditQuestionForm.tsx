@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Question } from '../../../types'
+import { REACT_APP_API_URL } from '../../../utils/helper'
 
 interface EditQuestionFormProps {
 	id: number
@@ -16,6 +17,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 		favourited: false,
 		timestamp: new Date(), // Initialize timestamp as a Date object
 	})
+	const apiURL = REACT_APP_API_URL
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -30,8 +32,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 				}
 
 				const response = await fetch(
-					`http://localhost:3000/get-question-by-id/${id}`
-					// `http://localhost:3000/get-question-by-id/20`
+					`${apiURL}/get-question-by-id/${id}`					
 				)
 				const responseData: [Question] = await response.json()
 				const data: Question = responseData[0]
@@ -42,7 +43,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 			}
 		}
 		fetchData()
-	}, [id])
+	}, [id, apiURL])
 
 	const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
 		const { name, type, checked, value } = event.currentTarget

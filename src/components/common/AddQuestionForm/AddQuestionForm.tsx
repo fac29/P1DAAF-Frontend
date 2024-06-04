@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Question } from "../../../types";
+import { REACT_APP_API_URL } from '../../../utils/helper'
 
 function AddQuestionForm() {
   const [addQuestion, setAddQuestion] = useState<Question>({
@@ -12,11 +13,12 @@ function AddQuestionForm() {
     favourited: false,
     timestamp: new Date(),
   });
-
+  const apiURL = REACT_APP_API_URL
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    fetch("http://localhost:3000/create-question", {
+    //fetch("http://localhost:3000/create-question", {
+    fetch(`${apiURL}/create-question`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
