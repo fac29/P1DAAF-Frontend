@@ -14,6 +14,7 @@ function AddQuestionForm() {
     timestamp: new Date(),
   });
   const apiURL = REACT_APP_API_URL
+  console.log(`React URL ${REACT_APP_API_URL}`)
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
