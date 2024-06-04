@@ -9,8 +9,6 @@ import {
   getDifficultyLevels,
 } from "../../../utils/helper";
 
-import { CategoryFilterTypes, Difficulty } from "../../../types";
-
 function AddQuestionForm() {
   const [addQuestion, setAddQuestion] = useState<AddQuestion>({
     id: "",
