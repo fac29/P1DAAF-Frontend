@@ -47,10 +47,27 @@ function AddQuestionForm() {
   const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
     const { name, type, checked, value } = event.target as HTMLInputElement;
 
-    setAddQuestion((prevState) => ({
+    setAddQuestion((prevState) => {
+      if (type === "checkbox") {
+        return {
+          ...prevState,
+          [name]: checked,
+        };
+      } else if (name.startsWith("option")) {
+        const index = parseInt(name.split(" ")[1], 10) - 1;
+        const newOptions = [...prevState.options];
+        newOptions[index] = value;
+        return {
+          ...prevState,
+          options: newOptions,
+        };
+      } else {
+        return {
       ...prevState,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+          [name]: value,
+        };
+      }
+    });
   };
 
   return (
