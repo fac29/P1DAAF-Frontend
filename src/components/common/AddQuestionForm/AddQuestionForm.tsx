@@ -4,11 +4,11 @@ import { REACT_APP_API_URL } from "../../../utils/helper";
 
 function AddQuestionForm() {
   const [addQuestion, setAddQuestion] = useState<Question>({
-    id: 9,
-    category: "test",
+    id: 0,
+    category: "",
     difficulty: "easy",
-    question: "How many",
-    options: ["01/07/1998", "07/07/1998", "02/02/1961", "09/09/1990"],
+    question: "",
+    options: ["", "", "", ""],
     answer: "",
     favourited: false,
     timestamp: new Date(),
@@ -16,11 +16,14 @@ function AddQuestionForm() {
   const apiURL = REACT_APP_API_URL;
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    let { id, timestamp } = addQuestion;
+
     const newId = new Date().valueOf();
     const newTimestamp = new Date();
-    id = newId;
-    timestamp = newTimestamp;
+    setAddQuestion((prevState) => ({
+      ...prevState,
+      id: newId,
+      timestamp: newTimestamp,
+    }));
 
     //fetch("http://localhost:3000/create-question", {
     fetch(`${apiURL}/create-question`, {
