@@ -17,7 +17,7 @@ export async function getData(category: string, difficulty: string) {
 		);
 
 		const data = await response.json();
-		//console.log(data);
+		console.log(`This is coming from the getData function${data}`);
 		return data;
 	} catch (error) {
 		console.log(error);
@@ -30,8 +30,6 @@ export function transformData(data: Questions) {
 		question: item.question,
 		options: item.options,
 	}));
-	console.log(transformedData);
+	console.log(`Here is the output from transformData fn ${transformedData}`);
 	return transformedData;
 }
-
-

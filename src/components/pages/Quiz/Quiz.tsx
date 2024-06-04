@@ -3,8 +3,14 @@ import { getData, transformData } from '../../../data/getData';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Questions } from '../../../types';
+import { useParams } from 'react-router-dom';
 
 function Quiz() {
+	const { category, difficulty } = useParams<{
+		category: string;
+		difficulty: string;
+	}>();
+
 	const [data, setData] = useState<
 		{
 			question: string;
@@ -13,19 +19,15 @@ function Quiz() {
 	>();
 
 	useEffect(() => {
-		getData('History', 'easy')
-			.then((data) => transformData(data))
-			.then((result) => setData(result));
-	}, []); // Empty dependency array means this effect runs once on mount
+		if (category && difficulty) {
+			getData(category, difficulty)
+				.then((data) => transformData(data))
+				.then((result) => setData(result));
+		}
+	}, [category, difficulty]); // Dependency array includes category and difficulty
 
 	return (
 		<>
-			<h1>Quiz component </h1>
-			<h1>Quiz component </h1>
-			<h1>Quiz component </h1>
-			<h1>Quiz component </h1>
-			<h1>Quiz component </h1>
-			<h1>Quiz component </h1>
 			{Array.isArray(data) && data.length > 0 ? (
 				<QuestionSlide
 					questions={data?.map((element) => element.question)}

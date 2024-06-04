@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../common/Button/Button';
 import Dropdown from '../../common/Dropdown/Dropdown';
-import { getData, transformData } from '../../../data/getData';
 import {
 	getCategoryFilterTypes,
 	getDifficultyLevels,
 } from '../../../utils/helper';
 import { CategoryFilterTypes, Difficulty } from '../../../types';
+// import { Link } from 'react-router-dom';
 // import { Questions } from '../../../types';
 // import { QuestionSlide } from '../../common/Question/QuestionSlide';
 
@@ -23,7 +23,7 @@ function Home() {
 
 	const navigate = useNavigate();
 	const handler = () => {
-		navigate('/quiz');
+		navigate(`/quiz/${category}/${difficulty}`);
 	};
 
 	const handleCategoryChange = (
@@ -37,11 +37,6 @@ function Home() {
 	) => {
 		setDifficulty(event.target.value as Difficulty);
 	};
-	//rethink this useEffect
-
-	getData(category, difficulty).then((result) => {
-		transformData(result);
-	});
 
 	return (
 		<div className='container mx-auto flex flex-col items-center mt-10 p-5'>
@@ -62,11 +57,6 @@ function Home() {
 				/>
 			</div>
 			<Button name='START QUIZ' color='orange' handler={handler} />
-			{/* you will eventually move this to thw Quiz page -> still keep the concept of passing from a parent to a child component
-			<QuestionSlide
-				questions={quizData.questions}
-				options={quizData.answers}
-			/> */}
 		</div>
 	);
 }
