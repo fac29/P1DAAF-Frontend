@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Question } from "../../../types";
+import { AddQuestion } from "../../../types";
 import { REACT_APP_API_URL } from "../../../utils/helper";
 
 function AddQuestionForm() {
-  const [addQuestion, setAddQuestion] = useState<Question>({
-    id: 0,
+  const [addQuestion, setAddQuestion] = useState<AddQuestion>({
+    id: "",
     category: "",
-    difficulty: "easy",
+    difficulty: "",
     question: "",
     options: ["", "", "", ""],
     answer: "",
@@ -19,19 +19,30 @@ function AddQuestionForm() {
 
     const newId = new Date().valueOf();
     const newTimestamp = new Date();
-    setAddQuestion((prevState) => ({
-      ...prevState,
+    setAddQuestion((prevState) => {
+      const updatedQuestion = {
+        ...prevState,
+        id: newId,
+        timestamp: newTimestamp,
+      };
+
+      // Return the new state
+      return updatedQuestion;
+    });
+
+    // Using the updatedQuestion for the fetch request
+    const updatedQuestion = {
+      ...addQuestion,
       id: newId,
       timestamp: newTimestamp,
-    }));
+    };
 
-    //fetch("http://localhost:3000/create-question", {
     fetch(`${apiURL}/create-question`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(addQuestion),
+      body: JSON.stringify(updatedQuestion),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -63,7 +74,7 @@ function AddQuestionForm() {
         };
       } else {
         return {
-      ...prevState,
+          ...prevState,
           [name]: value,
         };
       }
@@ -110,23 +121,12 @@ function AddQuestionForm() {
         />
 
         <label className="block text-gray-700 font-bold mb-2 self-end">
-          Option 0:
-        </label>
-        <input
-          type="text"
-          name="options"
-          value={addQuestion.options[0]}
-          onChange={handleInputChange}
-          className="w-full px-3 py-2 border rounded bg-white"
-        />
-
-        <label className="block text-gray-700 font-bold mb-2 self-end">
           Option 1:
         </label>
         <input
           type="text"
-          name="options"
-          value={addQuestion.options[1]}
+          name="option 1"
+          value={addQuestion.options[0]}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border rounded bg-white"
         />
@@ -136,8 +136,8 @@ function AddQuestionForm() {
         </label>
         <input
           type="text"
-          name="options"
-          value={addQuestion.options[2]}
+          name="option 2"
+          value={addQuestion.options[1]}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border rounded bg-white"
         />
@@ -147,7 +147,18 @@ function AddQuestionForm() {
         </label>
         <input
           type="text"
-          name="options"
+          name="option 3"
+          value={addQuestion.options[2]}
+          onChange={handleInputChange}
+          className="w-full px-3 py-2 border rounded bg-white"
+        />
+
+        <label className="block text-gray-700 font-bold mb-2 self-end">
+          Option 4:
+        </label>
+        <input
+          type="text"
+          name="option 4"
           value={addQuestion.options[3]}
           onChange={handleInputChange}
           className="w-full px-3 py-2 border rounded bg-white"
