@@ -62,7 +62,7 @@ function Score({ score }: Props) {
 					/>
 				</svg>
 				<span className='absolute text-gray-700 text-3xl font-bold'>
-					{score}
+					{Math.floor(score)}
 				</span>
 			</div>
 			<span className='text-gray-500 mt-2 text-center'>{getMessage()}</span>
