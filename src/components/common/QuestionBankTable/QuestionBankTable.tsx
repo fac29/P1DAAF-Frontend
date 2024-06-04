@@ -2,7 +2,7 @@ import React from 'react'
 import EditFormLine from '../EditFormLine/EditFormLine'
 import { Questions } from '../../../types'
 import { useNavigate } from 'react-router-dom'
-import { REACT_APP_API_URL } from '../../../utils/helper'
+//import { REACT_APP_API_URL } from '../../../utils/helper'
 
 interface QuestionBankTableProps {
 	questions: Questions
@@ -14,7 +14,8 @@ function QuestionBankTable({
 	setAllQuestions,
 }: QuestionBankTableProps) {
 	//const apiUrl = process.env.apiURL
-	const apiURL = REACT_APP_API_URL
+
+	const apiURL = import.meta.env.VITE_API_URL;
 	console.log(`APIRUL is: ${apiURL}`)
 
 	const handleDelete = (id: number) => {
