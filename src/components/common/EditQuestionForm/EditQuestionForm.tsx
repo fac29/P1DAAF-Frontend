@@ -76,6 +76,16 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
           ...prevState,
           options: newOptions,
         };
+      } else if (name.startsWith("category")) {
+        return {
+          ...prevState,
+          [name]: value,
+        };
+      } else if (name.startsWith("difficulty")) {
+        return {
+          ...prevState,
+          [name]: value,
+        };
       } else {
         return {
           ...prevState,
@@ -104,6 +114,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
         // Handle any errors
         console.error("Error:", error);
       });
+
     navigate("/questionbank");
   };
 
@@ -119,6 +130,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
         <Dropdown
           name="category"
           contentArr={categories}
+          defaultValue={questionData.category}
           handleDropdown={handleInputChange}
         />
 
@@ -126,8 +138,9 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
           Difficulty:
         </label>
         <Dropdown
-          name="category"
+          name="difficulty"
           contentArr={difficulties}
+          defaultValue={questionData.difficulty}
           handleDropdown={handleInputChange}
         />
 
