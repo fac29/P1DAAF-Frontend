@@ -2,6 +2,15 @@ import React, { useState } from "react";
 import { AddQuestion } from "../../../types";
 import { REACT_APP_API_URL } from "../../../utils/helper";
 
+import Dropdown from "../Dropdown/Dropdown";
+
+import {
+  getCategoryFilterTypes,
+  getDifficultyLevels,
+} from "../../../utils/helper";
+
+import { CategoryFilterTypes, Difficulty } from "../../../types";
+
 function AddQuestionForm() {
   const [addQuestion, setAddQuestion] = useState<AddQuestion>({
     id: "",
@@ -13,8 +22,12 @@ function AddQuestionForm() {
     favourited: false,
     timestamp: new Date(),
   });
+
+  const categories = getCategoryFilterTypes();
+  const difficulties = getDifficultyLevels();
+
   const apiURL = REACT_APP_API_URL;
-  console.log(`React URL ${REACT_APP_API_URL}`);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -56,9 +69,12 @@ function AddQuestionForm() {
       });
   };
 
-  const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    event:
+      | React.FormEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const { name, type, checked, value } = event.target as HTMLInputElement;
-
     setAddQuestion((prevState) => {
       if (type === "checkbox") {
         return {
@@ -91,23 +107,19 @@ function AddQuestionForm() {
         <label className="block text-gray-700 self-end font-bold mb-2">
           Category:
         </label>
-        <input
-          type="text"
+        <Dropdown
           name="category"
-          value={addQuestion.category}
-          onChange={handleInputChange}
-          className="w-full px-3 py-2 border rounded bg-white"
+          contentArr={categories}
+          handleDropdown={handleInputChange}
         />
 
         <label className="block text-gray-700 font-bold mb-2 self-end">
           Difficulty:
         </label>
-        <input
-          type="text"
+        <Dropdown
           name="difficulty"
-          value={addQuestion.difficulty}
-          onChange={handleInputChange}
-          className="w-full px-3 py-2 border rounded bg-white"
+          contentArr={difficulties}
+          handleDropdown={handleInputChange}
         />
 
         <label className="block text-gray-700 font-bold mb-2 self-end">
