@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react'
-//ButtonHandler?
 import Button from '../Button/Button'
 interface SlideProps {
 	questions: string[]
 	options: string[][]
 	answers: string[]
-	//feedback?: string;
-	//onSlideAdvance?(): void;
-	// onClickEvent: (event: React.MouseEvent<HTMLAnchorElement>)
 }
 
 export function QuestionSlide({ questions, options, answers }: SlideProps) {
@@ -22,35 +18,33 @@ export function QuestionSlide({ questions, options, answers }: SlideProps) {
 		console.log(`Selected Option is ${option}`)
 	}
 
-	const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1)
+	//const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1)
 	const [questionIndex, setQuestionIndex] = useState(0)
 
+	console.log(`questionIndex: ${questionIndex}  questionLength: ${questions.length}`)
 	//when you press next button...
-	const incrementQuestionHandler = () => {
-		//used to change the question number title at the top
-		setCurrentQuestionNumber(currentQuestionNumber + 1)
-		//used to display a question per button
-		setQuestionIndex(questionIndex + 1)
-
-		//const buttonValue = e.currentTarget.getAttribute('data-value')
-
-		if (selectedOption === answers[questionIndex]) {
-			setScore(score + 1)
-			console.log(`${score+1}`)
+	const nextHandler = () => {
+		if (questionIndex < questions.length-1) {
+			setQuestionIndex(questionIndex => questionIndex+1)
+			if (selectedOption === answers[questionIndex]) {
+				setScore(score => score + 1)
+				console.log(`${score + 1}`)
+			}
 		}
+		else
+		//ADD 
+	
 	}
 
 	//store the score
 	const [score, setScore] = useState<number>(0)
-
-	useEffect(() => {}), []
 
 	return (
 		<div className='flex flex-col justify-center items-center h-screen w-screen bg-gray-100'>
 			<div className='flex flex-col justify-center items-center w-96 h-auto p-10 border-4 border-gray-300 bg-white rounded-lg shadow-lg'>
 				<div className='text-2xl font-bold text-black mb-4'>
 					{' '}
-					Question: {currentQuestionNumber}
+					Question: {questionIndex + 1}
 				</div>
 				<div className=' text-black'>{questions[questionIndex]}</div>
 				<div className='pb-4'>
@@ -72,7 +66,7 @@ export function QuestionSlide({ questions, options, answers }: SlideProps) {
 						)
 					})}
 				</div>
-				<Button name='Next' handler={incrementQuestionHandler} />
+				<Button name='Next' handler={nextHandler} />
 			</div>
 			<div className=' text-black'>{answers[questionIndex]}</div>
 		</div>
