@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Question } from '../../../types'
-import { REACT_APP_API_URL } from '../../../utils/helper'
 
 interface EditQuestionFormProps {
 	id: number
@@ -17,7 +16,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 		favourited: false,
 		timestamp: new Date(), // Initialize timestamp as a Date object
 	})
-	const apiURL = REACT_APP_API_URL
+	const apiURL = import.meta.env.VITE_API_URL;
 
 	useEffect(() => {
 		const fetchData = async () => {
