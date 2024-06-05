@@ -8,7 +8,7 @@ import {
 	getCategoryFilterTypes,
 	getDifficultyLevels,
 } from '../../../utils/helper'
-import FavQuestion from '../FavQuestion/FavQuestion'
+//import FavQuestion from '../FavQuestion/FavQuestion'
 
 function AddQuestionForm() {
 	const [addQuestion, setAddQuestion] = useState<AddQuestion>({
@@ -211,9 +211,7 @@ function AddQuestionForm() {
 					checked={addQuestion.favourited}
 					onChange={handleInputChange}
 					className='w-full px-3 py-2 border rounded bg-white'
-				/> 
-				
-				
+				/>
 			</div>
 
 			<div className='w-full flex justify-between left-0 p-4 bg-gray-100'>
