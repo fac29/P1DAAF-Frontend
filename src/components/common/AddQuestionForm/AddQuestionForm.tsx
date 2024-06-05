@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { AddQuestion } from "../../../types";
-import { useNavigate } from "react-router";
-
-import Dropdown from "../Dropdown/Dropdown";
-import Button from "../Button/Button";
+import React, { useState } from 'react'
+import { AddQuestion } from '../../../types'
+import { useNavigate } from 'react-router'
+import Dropdown from '../Dropdown/Dropdown'
+import Button from '../Button/Button'
 
 import {
 	getCategoryFilterTypes,
 	getDifficultyLevels,
 } from '../../../utils/helper'
+import FavQuestion from '../FavQuestion/FavQuestion'
 
 function AddQuestionForm() {
 	const [addQuestion, setAddQuestion] = useState<AddQuestion>({
@@ -25,11 +25,11 @@ function AddQuestionForm() {
 	const categories = getCategoryFilterTypes()
 	const difficulties = getDifficultyLevels()
 
-  const navigate = useNavigate();
-  const apiURL = import.meta.env.VITE_API_URL;
-  
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+	const navigate = useNavigate()
+	const apiURL = import.meta.env.VITE_API_URL
+
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault()
 
 		const newId = new Date().valueOf()
 		const newTimestamp = new Date()
@@ -51,57 +51,57 @@ function AddQuestionForm() {
 			timestamp: newTimestamp,
 		}
 
-    fetch(`${apiURL}/create-question`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedQuestion),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response from the backend
-        console.log(data);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error("Error:", error);
-      });
-    navigate("/questionbank");
-  };
+		fetch(`${apiURL}/create-question`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(updatedQuestion),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				// Handle the response from the backend
+				console.log(data)
+			})
+			.catch((error) => {
+				// Handle any errors
+				console.error('Error:', error)
+			})
+		navigate('/questionbank')
+	}
 
-  const handleInputChange = (
-    event:
-      | React.FormEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const { name, type, checked, value } = event.target as HTMLInputElement;
-    setAddQuestion((prevState) => {
-      if (type === "checkbox") {
-        return {
-          ...prevState,
-          [name]: checked,
-        };
-      } else if (name.startsWith("option")) {
-        const index = parseInt(name.split(" ")[1], 10) - 1;
-        const newOptions = [...prevState.options];
-        newOptions[index] = value;
-        return {
-          ...prevState,
-          options: newOptions,
-        };
-      } else {
-        return {
-          ...prevState,
-          [name]: value,
-        };
-      }
-    });
-  };
+	const handleInputChange = (
+		event:
+			| React.FormEvent<HTMLInputElement>
+			| React.ChangeEvent<HTMLSelectElement>
+	) => {
+		const { name, type, checked, value } = event.target as HTMLInputElement
+		setAddQuestion((prevState) => {
+			if (type === 'checkbox') {
+				return {
+					...prevState,
+					[name]: checked,
+				}
+			} else if (name.startsWith('option')) {
+				const index = parseInt(name.split(' ')[1], 10) - 1
+				const newOptions = [...prevState.options]
+				newOptions[index] = value
+				return {
+					...prevState,
+					options: newOptions,
+				}
+			} else {
+				return {
+					...prevState,
+					[name]: value,
+				}
+			}
+		})
+	}
 
-  const goBack = () => {
-    navigate("/questionbank");
-  };
+	const goBack = () => {
+		navigate('/questionbank')
+	}
 
 	return (
 		<form
@@ -199,7 +199,7 @@ function AddQuestionForm() {
 					name='answer'
 					contentArr={addQuestion.options}
 					handleDropdown={handleInputChange}
-				//	defaultValue={addQuestion.answer}
+					//	defaultValue={addQuestion.answer}
 				/>
 
 				<label className='block text-gray-700 font-bold mb-2 self-end'>
@@ -211,15 +211,17 @@ function AddQuestionForm() {
 					checked={addQuestion.favourited}
 					onChange={handleInputChange}
 					className='w-full px-3 py-2 border rounded bg-white'
-				/>
+				/> 
+				
+				
 			</div>
 
-      <div className="w-full flex justify-between left-0 p-4 bg-gray-100">
-        <Button name="Back" handler={goBack} />
-        <Button name="Add Question" handler={() => handleSubmit} />
-      </div>
-    </form>
-  );
+			<div className='w-full flex justify-between left-0 p-4 bg-gray-100'>
+				<Button name='Back' handler={goBack} />
+				<Button name='Add Question' handler={() => handleSubmit} />
+			</div>
+		</form>
+	)
 }
 
 export default AddQuestionForm
