@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { AddQuestion } from "../../../types";
 import { REACT_APP_API_URL } from "../../../utils/helper";
+import { useNavigate } from "react-router";
 
 import Dropdown from "../Dropdown/Dropdown";
+import Button from "../Button/Button";
 
 import {
   getCategoryFilterTypes,
@@ -24,6 +26,7 @@ function AddQuestionForm() {
   const categories = getCategoryFilterTypes();
   const difficulties = getDifficultyLevels();
 
+  const navigate = useNavigate();
   const apiURL = REACT_APP_API_URL;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -65,6 +68,7 @@ function AddQuestionForm() {
         // Handle any errors
         console.error("Error:", error);
       });
+    navigate("/questionbank");
   };
 
   const handleInputChange = (
@@ -94,6 +98,10 @@ function AddQuestionForm() {
         };
       }
     });
+  };
+
+  const goBack = () => {
+    navigate("/questionbank");
   };
 
   return (
@@ -198,7 +206,10 @@ function AddQuestionForm() {
         />
       </div>
 
-      <button type="submit">Add question</button>
+      <div className="w-full flex justify-between left-0 p-4 bg-gray-100">
+        <Button name="Back" handler={goBack} />
+        <Button name="Add Question" handler={() => handleSubmit} />
+      </div>
     </form>
   );
 }
