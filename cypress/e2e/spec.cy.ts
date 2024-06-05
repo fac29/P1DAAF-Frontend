@@ -72,13 +72,25 @@ describe('Edit question page', () => {
 	})
 
 	it.only('Edit category on question 1', () => {
-    cy.visit('http://localhost:5173/questionbank/editquestion/10')
-    cy.get('.grid > :nth-child(2) > .bg-blue-500').should("be.visible").contains('Geography')
-      .select(2)
-      .invoke('val')
-      .should('eq', 'easy')
-		
+		cy.visit('http://localhost:5173/questionbank/editquestion/10')
+		cy.get('.grid > :nth-child(2) > .bg-blue-500')
+			.should('be.visible')
 
-		
+       // Read and store the initial value of the dropdown
+    // cy.get('.grid > :nth-child(2) > select').then(($select) => {
+    //   const initialValue = $select.val()})
+			
+		// Change to sciende
+		cy.get('.grid > :nth-child(2) > select').select('Science')
+		// Assert the value of the select element
+		cy.get('.grid > :nth-child(2) > select').should('have.value', 'Science')
+
+    //Change to to Geography
+    cy.get('.grid > :nth-child(2) > select').select('Geography')
+		// Assert the value of the select element
+		cy.get('.grid > :nth-child(2) > select').should('have.value', 'Geography')
+
+      //Ba
+
 	})
 })
