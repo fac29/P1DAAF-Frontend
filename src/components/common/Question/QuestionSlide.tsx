@@ -1,80 +1,88 @@
-import { useEffect, useState } from 'react'
-//ButtonHandler?
-import Button from '../Button/Button'
+import { useState } from 'react';
+import Button from '../Button/Button';
+import Score from '../Score/Score';
+import Modal from '../Modal/Modal'; // Import the Modal component
+import { useNavigate } from 'react-router-dom';
+
 interface SlideProps {
-	questions: string[]
-	options: string[][]
-	answers: string[]
-	//feedback?: string;
-	//onSlideAdvance?(): void;
-	// onClickEvent: (event: React.MouseEvent<HTMLAnchorElement>)
+	questions: string[];
+	options: string[][];
+	answers: string[];
 }
 
 export function QuestionSlide({ questions, options, answers }: SlideProps) {
-	//initalizing the state
+	// Initializing the state
+	const totalLength = questions.length;
+	const [selectedOption, setSelectedOption] = useState('');
+	const [questionIndex, setQuestionIndex] = useState(0);
+	const [score, setScore] = useState<number>(0);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isQuizFinished, setIsQuizFinished] = useState(false);
 
-	//Answer that user selected
-	const [selectedOption, setselectedOption] = useState('')
-
-	//handler to change the colour of the button ("option")
+	// Handler to change the color of the button ("option")
 	const handleOptionClick = (option: string) => {
-		setselectedOption(option)
-		console.log(`Selected Option is ${option}`)
-	}
+		setSelectedOption(option);
+		console.log(`Selected Option is ${option}`);
+	};
 
-	const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1)
-	const [questionIndex, setQuestionIndex] = useState(0)
-
-	//when you press next button...
-	const incrementQuestionHandler = () => {
-		//used to change the question number title at the top
-		setCurrentQuestionNumber(currentQuestionNumber + 1)
-		//used to display a question per button
-		setQuestionIndex(questionIndex + 1)
-
-		//const buttonValue = e.currentTarget.getAttribute('data-value')
-
+	// When you press the next button...
+	const nextHandler = () => {
 		if (selectedOption === answers[questionIndex]) {
-			setScore(score + 1)
-			console.log(`${score+1}`)
+			setScore((score) => score + 1);
+			console.log(`${score + 1}`);
 		}
-	}
+		if (questionIndex < totalLength - 1) {
+			setQuestionIndex((questionIndex) => questionIndex + 1);
+			setSelectedOption('');
+		} else {
+			// Show the modal with the score
+			setIsModalOpen(true);
+			setIsQuizFinished(true); // Set quiz finished to true
+		}
+	};
 
-	//store the score
-	const [score, setScore] = useState<number>(0)
-
-	useEffect(() => {}), []
+	// Handler for the back button
+	const navigate = useNavigate();
+	const backHandler = () => {
+		navigate('/home'); // Navigate back to the home page or any other desired route
+	};
 
 	return (
 		<div className='flex flex-col justify-center items-center h-screen w-screen bg-gray-100'>
-			<div className='flex flex-col justify-center items-center w-96 h-auto p-10 border-4 border-gray-300 bg-white rounded-lg shadow-lg'>
+			<div
+				id='questionCard'
+				className='flex flex-col justify-center items-center w-96 h-auto p-10 border-4 border-gray-300 bg-white rounded-lg shadow-lg'
+			>
 				<div className='text-2xl font-bold text-black mb-4'>
-					{' '}
-					Question: {currentQuestionNumber}
+					Question: {questionIndex + 1} / {totalLength}
 				</div>
 				<div className=' text-black'>{questions[questionIndex]}</div>
+
 				<div className='pb-4'>
-					{/* legendary piece of code  */}
-					{options[questionIndex].map((option, index) => {
-						return (
-							<button
-								key={index}
-								onClick={() => handleOptionClick(option)}
-								className={`w-full py-2 my-2 text-center rounded-lg ${
-									selectedOption === option
-										? 'bg-blue-500 text-white'
-										: 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-								}`}
-								data-value={option}
-							>
-								{option}
-							</button>
-						)
-					})}
+					{options[questionIndex].map((option, index) => (
+						<button
+							key={index}
+							onClick={() => handleOptionClick(option)}
+							className={`w-full py-2 my-2 text-center rounded-lg ${
+								selectedOption === option
+									? 'bg-blue-500 text-white'
+									: 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+							}`}
+							data-value={option}
+						>
+							{option}
+						</button>
+					))}
 				</div>
-				<Button name='Next' handler={incrementQuestionHandler} />
+				{!isQuizFinished ? (
+					<Button name='Next' handler={nextHandler} color='blue' />
+				) : (
+					<Button name='Back' handler={backHandler} color='orange' />
+				)}
 			</div>
-			<div className=' text-black'>{answers[questionIndex]}</div>
+			<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+				<Score score={(score * 100) / totalLength} />
+			</Modal>
 		</div>
-	)
+	);
 }
