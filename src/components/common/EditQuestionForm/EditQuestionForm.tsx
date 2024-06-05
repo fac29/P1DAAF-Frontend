@@ -3,6 +3,7 @@ import { Question, AddQuestion } from "../../../types";
 import { useNavigate } from "react-router";
 
 import Dropdown from "../Dropdown/Dropdown";
+import Button from "../Button/Button";
 
 import {
   getCategoryFilterTypes,
@@ -96,6 +97,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     fetch(`${apiURL}/edit-question`, {
       method: "POST",
       headers: {
@@ -113,6 +115,10 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
         console.error("Error:", error);
       });
 
+    navigate("/questionbank");
+  };
+
+  const goBack = () => {
     navigate("/questionbank");
   };
 
@@ -220,12 +226,10 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
         />
       </div>
 
-      <button
-        type="submit"
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-      >
-        Edit question
-      </button>
+      <div className="w-full flex justify-between left-0 p-4 bg-gray-100">
+        <Button name="Back" handler={goBack} />
+        <Button name="Edit Question" handler={() => handleSubmit} />
+      </div>
     </form>
   );
 };
