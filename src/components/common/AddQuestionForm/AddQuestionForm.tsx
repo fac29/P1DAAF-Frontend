@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AddQuestion } from "../../../types";
-import { REACT_APP_API_URL } from "../../../utils/helper";
 
 import Dropdown from "../Dropdown/Dropdown";
 
@@ -24,7 +23,7 @@ function AddQuestionForm() {
   const categories = getCategoryFilterTypes();
   const difficulties = getDifficultyLevels();
 
-  const apiURL = REACT_APP_API_URL;
+  const apiURL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
