@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Question, AddQuestion } from '../../../types'
 import { useNavigate } from 'react-router'
 
+<<<<<<< HEAD
 import Dropdown from '../Dropdown/Dropdown'
+=======
+import Dropdown from "../Dropdown/Dropdown";
+import Button from "../Button/Button";
+>>>>>>> origin/main
 
 import {
 	getCategoryFilterTypes,
@@ -94,6 +99,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 		})
 	}
 
+<<<<<<< HEAD
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
 		fetch(`${apiURL}/edit-question`, {
@@ -112,10 +118,32 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 				// Handle any errors
 				console.error('Error:', error)
 			})
+=======
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    fetch(`${apiURL}/edit-question`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(questionData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the backend
+        console.log(data);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error("Error:", error);
+      });
+>>>>>>> origin/main
 
 		navigate('/questionbank')
 	}
 
+<<<<<<< HEAD
 	return (
 		<form
 			onSubmit={handleSubmit}
@@ -131,6 +159,27 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 					defaultValue={questionData.category}
 					handleDropdown={handleInputChange}
 				/>
+=======
+  const goBack = () => {
+    navigate("/questionbank");
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="text-black p-4 bg-gray-100 rounded shadow-md"
+    >
+      <div className="grid grid-cols-2 gap-2 auto-cols-min">
+        <label className="block text-gray-700 self-end font-bold mb-2">
+          Category:
+        </label>
+        <Dropdown
+          name="category"
+          contentArr={categories}
+          defaultValue={questionData.category}
+          handleDropdown={handleInputChange}
+        />
+>>>>>>> origin/main
 
 				<label className='block text-gray-700 font-bold mb-2 self-end'>
 					Difficulty:
@@ -223,6 +272,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 				/>
 			</div>
 
+<<<<<<< HEAD
 			<button
 				type='submit'
 				className='mt-4 px-4 py-2 bg-blue-500 text-white rounded'
@@ -232,5 +282,14 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 		</form>
 	)
 }
+=======
+      <div className="w-full flex justify-between left-0 p-4 bg-gray-100">
+        <Button name="Back" handler={goBack} />
+        <Button name="Edit Question" handler={() => handleSubmit} />
+      </div>
+    </form>
+  );
+};
+>>>>>>> origin/main
 
 export default EditQuestionForm
