@@ -1,30 +1,60 @@
-# React + TypeScript + Vite
+# P1DAAF-Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to our Quiz App! Built with typescript and react and deployed on github pages.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Functionality](#functionality)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Expanding the ESLint configuration
+## Functionality
 
-If you are developing a production application we recommend updating the configuration to enable type aware lint rules:
+- Take a quiz based on category and difficulty level
+- View all questions
+- Add a question
+- Edit a question
+- Delete a question
+- Cypress testing
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+You will need a the backend running to test this locally on your machine.
+
+1.  **Clone the repository:**
+
+    ```sh
+    git clone https://github.com/fac29/P1DAAF-Frontend.git
+    cd P1DAAF-Frontend
+    ```
+
+2.  **Install dependencies:**
+
+    ```sh
+    npm install
+    ```
+
+3.  **Set up environment variables:**
+
+    Create a `.env.development` file in the root directory and add your configuration settings.
+
+    ```env
+    VITE_API_URL=http://localhost:3000
+    ```
+
+4.  **Run the application:**
+
+    ```sh
+    npm start
+    ```
+
+### Testing (Cypress):
+
+End to end testing is included. To run cypress testing please use the command:
+
+```sh
+npx cypress open
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
