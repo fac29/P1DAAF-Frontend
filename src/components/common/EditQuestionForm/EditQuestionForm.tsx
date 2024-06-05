@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Question, AddQuestion } from "../../../types";
-import { REACT_APP_API_URL } from "../../../utils/helper";
 import { useNavigate } from "react-router";
 
 import Dropdown from "../Dropdown/Dropdown";
@@ -26,7 +25,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
     favourited: false,
     timestamp: new Date(), // Initialize timestamp as a Date object
   });
-  const apiURL = REACT_APP_API_URL;
+  const apiURL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
   const categories = getCategoryFilterTypes();

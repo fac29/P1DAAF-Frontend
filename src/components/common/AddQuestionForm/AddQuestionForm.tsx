@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AddQuestion } from "../../../types";
-import { REACT_APP_API_URL } from "../../../utils/helper";
 import { useNavigate } from "react-router";
 
 import Dropdown from "../Dropdown/Dropdown";

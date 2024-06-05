@@ -3,14 +3,13 @@ import { useState, useEffect } from 'react'
 import Button from '../../common/Button/Button'
 import QuestionBankTable from '../../common/QuestionBankTable/QuestionBankTable'
 import { Questions } from '../../../types'
-import { REACT_APP_API_URL } from '../../../utils/helper'
 
 function QuestionBankPage() {
 	const [allQuestions, setAllQuestions] = useState<Questions>([])
 	const navigate = useNavigate()
 
 	//const apiURL = process.env.REACT_APP_API_URL
-	const apiURL = REACT_APP_API_URL
+	const apiURL = import.meta.env.VITE_API_URL;
 	// console.log(`URL es: ${apiURL}`)
 
 	const backHandler = () => {
