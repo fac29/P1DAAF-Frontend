@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Question, AddQuestion } from '../../../types'
 import { useNavigate } from 'react-router'
-import Dropdown from "../Dropdown/Dropdown";
-import Button from "../Button/Button";
-
+import Dropdown from '../Dropdown/Dropdown'
+import Button from '../Button/Button'
 
 import {
 	getCategoryFilterTypes,
@@ -114,30 +113,29 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 				console.error('Error:', error)
 			})
 
-
 		navigate('/questionbank')
 	}
 
-  const goBack = () => {
-    navigate("/questionbank");
-  };
+	const goBack = () => {
+		navigate('/questionbank')
+	}
 
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className="text-black p-4 bg-gray-100 rounded shadow-md"
-    >
-      <div className="grid grid-cols-2 gap-2 auto-cols-min">
-        <label className="block text-gray-700 self-end font-bold mb-2">
-          Category:
-        </label>
-        <Dropdown
-          name="category"
-          contentArr={categories}
-          defaultValue={questionData.category}
-          handleDropdown={handleInputChange}
-        />
-
+	return (
+		<form
+			onSubmit={handleSubmit}
+			className='text-black p-4 bg-gray-100 rounded shadow-md'
+		>
+			<div className='grid grid-cols-2 gap-2 auto-cols-min'>
+				<label className='block text-gray-700 self-end font-bold mb-2'>
+					Category:
+				</label>
+				<Dropdown
+					name='category'
+					data-cy='categoryDropdown'
+					contentArr={categories}
+					defaultValue={questionData.category}
+					handleDropdown={handleInputChange}
+				/>
 
 				<label className='block text-gray-700 font-bold mb-2 self-end'>
 					Difficulty:
@@ -215,7 +213,7 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 					name='answer'
 					contentArr={questionData.options}
 					handleDropdown={handleInputChange}
-          defaultValue={questionData.answer}
+					defaultValue={questionData.answer}
 				/>
 
 				<label className='block text-gray-700 font-bold mb-2 self-end'>
@@ -230,14 +228,12 @@ const EditQuestionForm: React.FC<EditQuestionFormProps> = ({ id }) => {
 				/>
 			</div>
 
-
-      <div className="w-full flex justify-between left-0 p-4 bg-gray-100">
-        <Button name="Back" handler={goBack} />
-        <Button name="Edit Question" handler={() => handleSubmit} />
-      </div>
-    </form>
-  );
-};
-
+			<div className='w-full flex justify-between left-0 p-4 bg-gray-100'>
+				<Button name='Back' handler={goBack} />
+				<Button name='Edit Question' data-cy='editButton' handler={() => handleSubmit} />
+			</div>
+		</form>
+	)
+}
 
 export default EditQuestionForm
