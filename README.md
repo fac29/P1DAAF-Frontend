@@ -48,7 +48,7 @@ You will need the backend running to test this locally on your machine.
 4.  **Run the application:**
 
     ```sh
-    npm start
+    npm run dev
     ```
 
 ### Testing (Cypress):
