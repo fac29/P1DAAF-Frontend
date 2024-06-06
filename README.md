@@ -22,7 +22,7 @@ Welcome to our Quiz App! Built with typescript and react and deployed on github 
 
 ## Installation
 
-You will need a the backend running to test this locally on your machine.
+You will need the backend running to test this locally on your machine.
 
 1.  **Clone the repository:**
 
