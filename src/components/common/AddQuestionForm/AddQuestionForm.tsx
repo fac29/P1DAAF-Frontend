@@ -32,10 +32,12 @@ function AddQuestionForm() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (
-      !addQuestion.category ||
-      !addQuestion.difficulty ||
-      !addQuestion.question ||
-      !addQuestion.options
+      !(
+        addQuestion.category &&
+        addQuestion.difficulty &&
+        addQuestion.question &&
+        addQuestion.options
+      )
     ) {
       alert('Please fill put all fields');
       return;
