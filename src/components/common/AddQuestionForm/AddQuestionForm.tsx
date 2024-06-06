@@ -8,6 +8,7 @@ import {
   getCategoryFilterTypes,
   getDifficultyLevels,
 } from '../../../utils/helper';
+
 //import FavQuestion from '../FavQuestion/FavQuestion'
 
 function AddQuestionForm() {
@@ -30,6 +31,19 @@ function AddQuestionForm() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (
+      !(
+        addQuestion.category &&
+        addQuestion.difficulty &&
+        addQuestion.question &&
+        addQuestion.options &&
+        addQuestion.answer
+      )
+    ) {
+      alert('Please fill put all fields');
+      return;
+    }
+    //Submit form data
 
     const newId = new Date().valueOf();
     const newTimestamp = new Date();
@@ -75,7 +89,9 @@ function AddQuestionForm() {
       | React.FormEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
   ) => {
+    event.preventDefault();
     const { name, type, checked, value } = event.target as HTMLInputElement;
+
     setAddQuestion((prevState) => {
       if (type === 'checkbox') {
         return {
