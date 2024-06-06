@@ -1,7 +1,7 @@
 describe('Add question user journey', () => {
   it('A user can navigate to the question bank and successfully add a new question', () => {
     const question = 'When was England last conquered?';
-    cy.visit('http://localhost:5173/P1DAAF-Frontend/');
+    cy.visit('http://localhost:5173/');
     cy.get('.space-x-8 > :nth-child(2) > .text-white > span').click();
     cy.get('.flex-col > :nth-child(1) > .mx-2').click();
     cy.get('.grid > :nth-child(2) > .bg-blue-500').select('History');
