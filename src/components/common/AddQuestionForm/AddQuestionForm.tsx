@@ -36,7 +36,8 @@ function AddQuestionForm() {
         addQuestion.category &&
         addQuestion.difficulty &&
         addQuestion.question &&
-        addQuestion.options
+        addQuestion.options &&
+        addQuestion.answer
       )
     ) {
       alert('Please fill put all fields');
