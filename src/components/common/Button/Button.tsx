@@ -5,6 +5,7 @@ interface Props {
 	postIcon?: React.ReactNode
 	handler?: () => void
 	color?: 'blue' | 'red' | 'yellow' | 'black' | 'grey' | 'green' | 'orange'
+	'data-cy'?: string
 }
 
 /**
@@ -14,7 +15,7 @@ interface Props {
  * @param {()=>void} handler - Button handler. Optional
  * @param {'blue' | 'red' | 'yellow' |'black'|'grey'|'green'|'orange'} color - Button color. Optional
  */
-function Button({ name, preIcon, postIcon, handler, color = 'blue' }: Props) {
+function Button({ name, preIcon, postIcon, handler, color = 'blue', 'data-cy': dataCy }: Props) {
 	// Determine the button color, defaulting to blue if no color prop is provided
 
 	const colorVariants = {
@@ -34,6 +35,7 @@ function Button({ name, preIcon, postIcon, handler, color = 'blue' }: Props) {
 		<button
 			className={`${classes} font-bold py-2 px-4 rounded flex w-min text-nowrap items-center focus:outline-none`}
 			onClick={handler}
+			data-cy={dataCy} 
 			
 		>
 			{preIcon && <span>{preIcon}</span>}
